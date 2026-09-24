@@ -11,6 +11,7 @@
     ["venue.html", "venue", "Venue"],
     ["gallery.html", "gallery", "Gallery"],
     ["sponsors.html", "sponsors", "Sponsors"],
+    ["awards.html", "awards", "Awards"],
     ["blog.html", "blog", "Blog"],
     ["faq.html", "faq", "FAQ"],
     ["contact.html", "contact", "Contact"]
@@ -47,7 +48,7 @@
         '<img class="footer-logo theme-logo" src="assets/logo-dark.png" data-logo-dark="assets/logo-dark.png" data-logo-light="assets/logo-light.png" alt="Trading Expo India"></a>' +
         "<p>India's premier online trading, fintech &amp; financial markets exhibition.<br>23–24 April 2027.</p></div>" +
         '<nav class="footer-col" aria-label="Event"><h4>Event</h4>' +
-        '<a href="index.html">Home</a><a href="agenda.html">Agenda</a><a href="venue.html">Venue</a><a href="gallery.html">Gallery</a><a href="tickets.html">Tickets</a><a href="faq.html">FAQ</a><a href="blog.html">Blog</a></nav>' +
+        '<a href="index.html">Home</a><a href="agenda.html">Agenda</a><a href="venue.html">Venue</a><a href="gallery.html">Gallery</a><a href="awards.html">Awards</a><a href="tickets.html">Tickets</a><a href="faq.html">FAQ</a><a href="blog.html">Blog</a></nav>' +
         '<nav class="footer-col" aria-label="Participate"><h4>Participate</h4>' +
         '<a href="exhibit.html">Exhibit</a><a href="sponsors.html">Sponsor</a><a href="contact.html">Speak</a><a href="sponsors.html">Partners</a><a href="portal.html">Exhibitor Portal</a></nav>' +
         '<div class="footer-col"><h4>Event Info</h4>' +
