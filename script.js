@@ -9,8 +9,15 @@
   function currentTheme() {
     try { return localStorage.getItem(KEY); } catch (e) { return null; }
   }
+  function applyLogos(t) {
+    var imgs = document.querySelectorAll("img[data-logo-dark]");
+    for (var i = 0; i < imgs.length; i++) {
+      imgs[i].src = t === "light" ? imgs[i].getAttribute("data-logo-light") : imgs[i].getAttribute("data-logo-dark");
+    }
+  }
   function applyTheme(t) {
     root.setAttribute("data-theme", t);
+    applyLogos(t);
     var label = document.getElementById("themeLabel");
     if (label) label.textContent = t === "dark" ? "Light mode" : "Dark mode";
     try { localStorage.setItem(KEY, t); } catch (e) {}
