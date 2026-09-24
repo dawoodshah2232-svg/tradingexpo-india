@@ -453,6 +453,8 @@ body.loaded [data-hero]:nth-of-type(1) { animation-delay: 0.05s; }
   .launch-banner, .group-banner { padding: 28px; }
   .tick-list.two-col { grid-template-columns: 1fr; }
   .final-numbers { gap: 20px; }
+  .venue-tba { padding: 48px 24px; border-radius: 24px; }
+  .venue-tba .final-numbers { gap: 14px 20px; }
   .manifesto { padding: 110px 0 90px; }
   .banner figcaption { left: 16px; bottom: 16px; font-size: 12.5px; }
 }
@@ -512,7 +514,17 @@ body.loaded [data-hero]:nth-of-type(1) { animation-delay: 0.05s; }
 .venue-card { display: grid; grid-template-columns: 1fr 1fr; border-radius: 30px; overflow: hidden; border: 1px solid var(--border); box-shadow: var(--shadow-lg); background: var(--card); }
 .venue-card > img { width: 100%; height: 100%; min-height: 400px; object-fit: cover; }
 .venue-body { padding: 56px 52px; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; gap: 18px; }
-.venue-tba { font-size: 12px; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase; color: #062d1a; background: #00C853; padding: 8px 18px; border-radius: 980px; }
+.venue-tba { position: relative; overflow: hidden; border-radius: 30px; padding: 68px 56px; background: linear-gradient(135deg, #00d95a 0%, #00a86b 55%, #00804a 100%); color: #052e16; text-align: center; box-shadow: 0 30px 70px rgba(0, 200, 83, 0.30); }
+.venue-tba::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 85% 12%, rgba(255,255,255,0.38), transparent 46%), radial-gradient(circle at 8% 88%, rgba(255,255,255,0.16), transparent 42%); pointer-events: none; }
+.venue-tba-inner { position: relative; max-width: 680px; margin: 0 auto; }
+.venue-tba .eyebrow { color: rgba(5, 46, 22, 0.72); }
+.venue-tba h2 { font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 3.4rem); font-weight: 800; letter-spacing: -0.03em; color: #052e16; margin: 10px 0 14px; }
+.venue-tba p { color: rgba(5, 46, 22, 0.88); font-size: 1.05rem; margin: 0 auto 26px; max-width: 560px; }
+.venue-tba .final-numbers { margin-bottom: 34px; gap: 30px; }
+.venue-tba .final-numbers span { color: rgba(5, 46, 22, 0.72); }
+.venue-tba .final-numbers strong { color: #052e16; }
+.venue-tba .btn-primary { background: #0B1F3B; box-shadow: 0 12px 30px rgba(11, 31, 59, 0.35); }
+.venue-tba .btn-primary:hover { box-shadow: 0 18px 44px rgba(11, 31, 59, 0.45); }
 .venue-body h3 { font-family: var(--font-display); font-size: 1.9rem; font-weight: 800; letter-spacing: -0.03em; }
 .venue-body p { color: var(--muted); }
 .venue-facts { display: flex; gap: 12px; flex-wrap: wrap; }
