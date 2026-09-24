@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Position Sizing in Trading: The Math That Matters More Than Strategy — Trading Expo India 2027</title>
+<meta name="description" content="Position sizing guide for traders: fixed fractional risk, the 1% rule, Kelly criterion basics, and calculators for Indian markets.">
+<meta property="og:title" content="Position Sizing in Trading: The Math That Matters More Than Strategy">
+<meta property="og:description" content="Position sizing guide for traders: fixed fractional risk, the 1% rule, Kelly criterion basics, and calculators for Indian markets.">
+<meta property="og:image" content="../assets/og-image.png">
+<meta property="og:type" content="article">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css?v=20260925a">
+<style>
+.txi-byline{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin:20px 0 34px;padding:16px 22px;border:1px solid var(--border,#232b34);border-radius:14px;font-size:.9rem;color:var(--muted,#9aa3ad)}
+.txi-article{max-width:760px;margin:0 auto}
+.txi-article p{line-height:1.85;margin:0 0 1.4em;font-size:1.02rem}
+.txi-article h2{font-size:1.5rem;margin:2.2em 0 .8em;line-height:1.35}
+.txi-article ul{margin:0 0 1.6em;padding-left:1.3em;line-height:1.85}
+.txi-article li{margin-bottom:.5em}
+.txi-article blockquote{border-left:3px solid #00C853;padding:.4em 0 .4em 1.2em;margin:2em 0;font-size:1.15rem;font-weight:600;line-height:1.65}
+.txi-article figure{margin:2.4em 0}
+.txi-article figure img{width:100%;border-radius:16px;display:block}
+.txi-article figcaption{font-size:.85rem;color:var(--muted,#9aa3ad);margin-top:10px;text-align:center}
+.txi-cta-box{background:linear-gradient(135deg,rgba(0,200,83,.12),rgba(0,168,107,.05));border:1px solid rgba(0,200,83,.3);border-radius:18px;padding:38px 30px;margin:3em 0;text-align:center}
+.txi-cta-box h3{margin:0 0 .6em;font-size:1.4rem}
+.txi-cta-box p{margin:0 0 1.5em;color:var(--muted,#9aa3ad)}
+.txi-back{display:inline-block;margin:0 0 2em;text-decoration:none;font-weight:600;font-size:.95rem}
+.txi-faq details{border:1px solid var(--border,#232b34);border-radius:12px;margin-bottom:12px;overflow:hidden}
+.txi-faq summary{cursor:pointer;padding:16px 20px;font-weight:700;font-size:1rem;list-style:none}
+.txi-faq summary::-webkit-details-marker{display:none}
+.txi-faq summary::after{content:"+";float:right;color:#00C853;font-size:1.3rem;line-height:1}
+.txi-faq details[open] summary::after{content:"\2212"}
+.txi-faq details p{padding:0 20px 18px;margin:0;color:var(--muted,#9aa3ad);font-size:.96rem}
+.txi-related{background:var(--card,#10151b);border:1px solid var(--border,#232b34);border-radius:16px;padding:28px;margin:3em 0}
+.txi-related h3{margin:0 0 1em;font-size:1.15rem}
+.txi-related ul{margin:0;padding-left:1.2em}
+.txi-related a{text-decoration:none;font-weight:600}
+.txi-related a:hover{color:#00C853}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Position Sizing in Trading: The Math That Matters More Than Strategy",
+  "description": "Position sizing guide for traders: fixed fractional risk, the 1% rule, Kelly criterion basics, and calculators for Indian markets.",
+  "datePublished": "2026-09-24",
+  "author": {
+    "@type": "Organization",
+    "name": "Trading Expo India"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the 1% rule in trading?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Risk no more than 1% of your trading capital on a single trade. It ensures that even long losing streaks cause survivable drawdowns rather than account-ending ones."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I calculate position size?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Position size = (account × risk%) ÷ (entry price − stop-loss price). The stop distance determines the size — never decide share quantity before knowing your stop."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I increase size after winning streaks?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Fixed-fractional sizing increases size automatically as the account grows. Avoid discretionary size-jumps after wins — overconfidence position-sizing is a classic way to give back streaks."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body data-page="blog">
+<div id="siteHeader"></div>
+<main>
+<section class="page-hero"><div class="container">
+<p class="eyebrow">Blog &middot; Trading Strategies</p>
+<h1>Position Sizing in Trading: The Math That Matters More Than Strategy</h1>
+<div class="txi-byline"><span><strong>Trading Expo India editorial team</strong></span><span>&middot;</span><span>September 24, 2026</span><span>&middot;</span><span>3 min read</span></div>
+</div></section>
+<section class="section"><div class="container"><div class="txi-article">
+<p><a class="txi-back" href="../blog.html">&larr; Back to all articles</a></p>
+<figure>
+<img src="../assets/img/trading-tech.jpg" alt="Position Sizing in Trading: The Math That Matters More Than Strategy" loading="lazy">
+<figcaption>Trading Expo India 2027 &mdash; 23&ndash;24 April 2027, India.</figcaption>
+</figure>
+<p>Two traders can take identical trades with identical win rates — and one thrives while the other blows up. The difference is position sizing: how much capital each trade risks. It is the least glamorous and most decisive skill in trading.</p>
+<p>Master this maths and every strategy you ever learn gets safer. Ignore it and no strategy can save you.</p>
+<h2>The 1% rule and fixed-fractional sizing</h2>
+<p>The professional standard: risk no more than 1% of your account on any single trade (2% is the aggressive ceiling). On a ₹5,00,000 account, that is ₹5,000 maximum loss per trade — so a trade with a ₹10 stop-loss per share gets 500 shares, while one with a ₹50 stop gets 100.</p>
+<p>Position size is therefore derived from the stop distance, never chosen first. The formula is simple: shares = risk amount ÷ (entry − stop). This single habit enforces discipline automatically.</p>
+<h2>Why sizing beats prediction</h2>
+<p>Consider a strategy with 50% win rate at 2:1 reward-to-risk. Risking 1% per trade, a ten-trade losing streak — statistically inevitable over a career — costs under 10% of the account. Risking 10% per trade, the same normal streak destroys 65% of capital and ends most traders psychologically.</p>
+<p>Drawdowns are a mathematical certainty; ruin is a choice. Sizing is how you choose survival.</p>
+<h2>The Kelly criterion: powerful but dangerous</h2>
+<p>The Kelly formula computes the theoretically optimal bet size from win rate and payoff ratio — but it assumes perfectly known probabilities and produces terrifying drawdowns in practice. Professional gamblers and traders who use Kelly typically apply 'fractional Kelly' (a quarter to a half of the full value).</p>
+<p>For most traders, fixed-fractional 1% is simpler, more robust and easier to follow under stress. Complexity you abandon mid-drawdown is worse than simplicity you maintain.</p>
+<h2>Position sizing for options buyers and leveraged trades</h2>
+<p>Options buyers face a sizing subtlety: the premium is the maximum loss, which tempts traders to buy 'cheap' far out-of-the-money options in large quantities. But a ₹5 option that expires worthless 80% of the time needs very different sizing than equity with a stop-loss — the win rate is low and the payoff distribution is skewed. Size options positions by premium risked as a fraction of capital (0.5–1% for speculative long options), and never let the low ticket price justify oversized quantity. Ten thousand rupees in lottery-ticket options is not 'small' — it is ten thousand rupees of near-certain decay.</p>
+<p>For leveraged futures and intraday positions, compute size from the stop distance in points times lot quantity, exactly as with equities — leverage does not change the formula, it only means smaller capital controls the position. And add a portfolio-level rule leveraged traders often miss: cap total margin utilised at a fraction (say 50–60%) of available capital, keeping dry powder for drawdowns and preventing the forced exits that margin calls impose at the worst moments. The traders who survive leveraged products are not the ones who predict best; they are the ones whose sizing survives being wrong repeatedly.</p>
+<h2>Risk maths is a conference topic</h2>
+<p>Position sizing and risk frameworks feature across strategy sessions at <a href="../index.html">Trading Expo India 2027</a>, 23–24 April 2027 — because professionals know the maths decides outcomes.</p>
+<p>Study risk with 80+ speakers on the <a href="../agenda.html">agenda</a>. <a href="../tickets.html">Book from ₹249</a>.</p>
+<h2>Frequently asked questions</h2>
+<div class="txi-faq">
+<details><summary>What is the 1% rule in trading?</summary><p>Risk no more than 1% of your trading capital on a single trade. It ensures that even long losing streaks cause survivable drawdowns rather than account-ending ones.</p></details>
+<details><summary>How do I calculate position size?</summary><p>Position size = (account × risk%) ÷ (entry price − stop-loss price). The stop distance determines the size — never decide share quantity before knowing your stop.</p></details>
+<details><summary>Should I increase size after winning streaks?</summary><p>Fixed-fractional sizing increases size automatically as the account grows. Avoid discretionary size-jumps after wins — overconfidence position-sizing is a classic way to give back streaks.</p></details>
+</div>
+<div class="txi-related">
+<h3>Related articles</h3>
+<ul>
+<li><a href="risk-management-trading-complete-guide.html">Risk Management in Trading: The Complete Guide (2026)</a></li>
+<li><a href="stop-loss-guide-placement-mistakes.html">Stop-Loss Guide: Where to Place It and 5 Mistakes That Guarantee Losses</a></li>
+<li><a href="swing-trading-strategy-india.html">Swing Trading Strategy for Indian Markets: Capturing Multi-Day Moves</a></li>
+</ul>
+</div>
+<div class="txi-cta-box">
+<h3>Meet the market in person.</h3>
+<p>Join 10,000+ visitors at Trading Expo India 2027, 23&ndash;24 April 2027. Early-bird passes from &#8377;249.</p>
+<p><a class="btn btn-primary btn-lg" href="../tickets.html">Book your ticket</a></p>
+</div>
+<p><a class="txi-back" href="../blog.html">&larr; Back to all articles</a></p>
+</div></div></section>
+</main>
+<div id="siteFooter"></div>
+<button class="to-top" id="toTop" aria-label="Back to top">&#8593;</button>
+<script src="../script.js?v=20260925a"></script>
+</body>
+</html>
