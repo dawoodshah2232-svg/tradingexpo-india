@@ -147,14 +147,85 @@
 
   let down = false, startX = 0, startL = 0;
   gal.addEventListener('pointerdown', (e) => {
-    down = true; startX = e.clientX; startL = gal.scrollLeft;
+    down = true; startX = e.clientX; startL = gal.scrollLeft; gal._moved = false;
     gal.classList.add('dragging'); gal.setPointerCapture(e.pointerId);
   });
   gal.addEventListener('pointermove', (e) => {
     if (!down) return;
+    if (Math.abs(e.clientX - startX) > 6) gal._moved = true;
     gal.scrollLeft = startL - (e.clientX - startX);
   });
   ['pointerup', 'pointercancel', 'pointerleave'].forEach((ev) =>
     gal.addEventListener(ev, () => { down = false; gal.classList.remove('dragging'); })
   );
+})();
+
+/* Agenda day tabs */
+(function () {
+  const tabs = document.querySelectorAll('.agenda-tab');
+  const panels = document.querySelectorAll('.agenda-panel');
+  if (!tabs.length) return;
+  tabs.forEach((t) => t.addEventListener('click', () => {
+    tabs.forEach((x) => { x.classList.remove('active'); x.setAttribute('aria-selected', 'false'); });
+    panels.forEach((p) => p.classList.remove('active'));
+    t.classList.add('active');
+    t.setAttribute('aria-selected', 'true');
+    document.getElementById(t.dataset.day)?.classList.add('active');
+  }));
+})();
+
+/* Gallery lightbox (drag-aware: won't open after a swipe) */
+(function () {
+  const gal = document.getElementById('galleryTrack');
+  const cards = [...document.querySelectorAll('.g-card')];
+  const lb = document.getElementById('lightbox');
+  if (!cards.length || !lb || !gal) return;
+  const img = document.getElementById('lbImg');
+  const cap = document.getElementById('lbCap');
+  let i = 0;
+  const show = (n) => {
+    i = (n + cards.length) % cards.length;
+    const cImg = cards[i].querySelector('img');
+    const cCap = cards[i].querySelector('figcaption');
+    img.src = cImg.src; img.alt = cImg.alt;
+    cap.innerHTML = cCap ? cCap.innerHTML : '';
+  };
+  const open = (n) => { show(n); lb.classList.add('open'); lb.setAttribute('aria-hidden', 'false'); document.body.classList.add('locked'); };
+  const close = () => { lb.classList.remove('open'); lb.setAttribute('aria-hidden', 'true'); document.body.classList.remove('locked'); };
+  cards.forEach((c, n) => c.addEventListener('click', () => { if (!gal._moved) open(n); }));
+  document.getElementById('lbClose').addEventListener('click', close);
+  document.getElementById('lbPrev').addEventListener('click', (e) => { e.stopPropagation(); show(i - 1); });
+  document.getElementById('lbNext').addEventListener('click', (e) => { e.stopPropagation(); show(i + 1); });
+  lb.addEventListener('click', (e) => { if (e.target === lb) close(); });
+  document.addEventListener('keydown', (e) => {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') close();
+    if (e.key === 'ArrowLeft') show(i - 1);
+    if (e.key === 'ArrowRight') show(i + 1);
+  });
+})();
+
+/* Enquiry form -> composes an email to the Trading Expo team */
+(function () {
+  const f = document.getElementById('enquiryForm');
+  if (!f) return;
+  f.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const d = new FormData(f);
+    const subject = encodeURIComponent('Trading Expo India 2027 enquiry — ' + d.get('interest'));
+    const body = encodeURIComponent(
+      'Name: ' + d.get('name') + '\nEmail: ' + d.get('email') +
+      '\nInterested in: ' + d.get('interest') +
+      '\n\nMessage:\n' + (d.get('message') || '—')
+    );
+    window.location.href = 'mailto:info@tradingexpo.com?subject=' + subject + '&body=' + body;
+  });
+})();
+
+/* Back to top */
+(function () {
+  const b = document.getElementById('toTop');
+  if (!b) return;
+  window.addEventListener('scroll', () => b.classList.toggle('show', window.scrollY > 900), { passive: true });
+  b.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 })();
