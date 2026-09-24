@@ -133,3 +133,28 @@
     s.style.scrollMarginTop = "76px";
   });
 })();
+
+/* Gallery: arrows + drag-to-scroll */
+(function () {
+  const gal = document.getElementById('galleryTrack');
+  if (!gal) return;
+  const step = () => {
+    const card = gal.querySelector('.g-card');
+    return card ? card.offsetWidth + 22 : 400;
+  };
+  document.getElementById('gPrev')?.addEventListener('click', () => gal.scrollBy({ left: -step(), behavior: 'smooth' }));
+  document.getElementById('gNext')?.addEventListener('click', () => gal.scrollBy({ left: step(), behavior: 'smooth' }));
+
+  let down = false, startX = 0, startL = 0;
+  gal.addEventListener('pointerdown', (e) => {
+    down = true; startX = e.clientX; startL = gal.scrollLeft;
+    gal.classList.add('dragging'); gal.setPointerCapture(e.pointerId);
+  });
+  gal.addEventListener('pointermove', (e) => {
+    if (!down) return;
+    gal.scrollLeft = startL - (e.clientX - startX);
+  });
+  ['pointerup', 'pointercancel', 'pointerleave'].forEach((ev) =>
+    gal.addEventListener(ev, () => { down = false; gal.classList.remove('dragging'); })
+  );
+})();
