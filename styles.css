@@ -108,6 +108,7 @@ html[data-theme="light"] ::-webkit-scrollbar-thumb { background: #c7c7cc; }
   transition: transform 0.9s cubic-bezier(0.76, 0, 0.24, 1);
 }
 .preloader.done { transform: translateY(-100%); }
+body.pre-loading { overflow: hidden; }
 .pre-logo { display: flex; flex-direction: column; align-items: center; line-height: 1; overflow: hidden; }
 .pre-t { font-family: var(--font-display); font-weight: 800; font-size: clamp(2rem, 7vw, 3.4rem); letter-spacing: 0.08em; color: #9dc0ff; animation: preUp 0.8s cubic-bezier(0.22,1,0.36,1) both; }
 .pre-e { font-family: var(--font-display); font-weight: 800; font-size: clamp(1.7rem, 6vw, 2.9rem); letter-spacing: 0.3em; color: #00C853; margin-top: 6px; animation: preUp 0.8s 0.12s cubic-bezier(0.22,1,0.36,1) both; }
