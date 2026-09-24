@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Portal — Trading Expo India 2027</title>
-<meta name="description" content="Log in to the Trading Expo India 2027 portal — manage your tickets, exhibitor booking, team badges and brand uploads.">
+<meta name="description" content="Log in to the Trading Expo India 2027 portal — CRM-style dashboards for ticket holders, exhibitors and event admins. Manage tickets, booths, badges, documents and announcements in one place.">
 <meta property="og:title" content="Portal — Trading Expo India 2027">
 <meta property="og:description" content="Ticket holders, exhibitors and admins — manage everything in one place.">
-<meta property="og:image" content="assets/og-image.png">
+<meta property="og:image" content="https://dawoodshah2232-svg.github.io/tradingexpo-india/assets/og-image.png">
+<meta property="og:url" content="https://dawoodshah2232-svg.github.io/tradingexpo-india/portal.html">
 <meta property="og:type" content="website">
 <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
@@ -16,37 +17,58 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css?v=20260925a">
+<link rel="stylesheet" href="portal.css?v=20260925b">
+<link rel="canonical" href="https://dawoodshah2232-svg.github.io/tradingexpo-india/portal.html">
+<meta name="theme-color" content="#00C853">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Portal — Trading Expo India 2027">
+<meta name="twitter:description" content="Ticket holders, exhibitors and admins — manage everything in one place.">
+<meta name="twitter:image" content="https://dawoodshah2232-svg.github.io/tradingexpo-india/assets/og-image.png">
+<meta property="og:site_name" content="Trading Expo India 2027">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "name": "ProFX Media FZ-LLC", "url": "https://TradingExpo.com", "logo": "https://dawoodshah2232-svg.github.io/tradingexpo-india/assets/og-image.png", "brand": {"@type": "Brand", "name": "Trading Expo India 2027"}}, {"@type": "Event", "name": "Trading Expo India 2027", "description": "India's premier online trading, fintech and financial markets exhibition, 23–24 April 2027.", "startDate": "2027-04-23T09:00:00+05:30", "endDate": "2027-04-24T18:00:00+05:30", "eventStatus": "https://schema.org/EventScheduled", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "url": "https://dawoodshah2232-svg.github.io/tradingexpo-india/portal.html", "image": "https://dawoodshah2232-svg.github.io/tradingexpo-india/assets/og-image.png", "location": {"@type": "Place", "name": "To be announced", "address": {"@type": "PostalAddress", "addressCountry": "IN"}}, "organizer": {"@type": "Organization", "name": "ProFX Media FZ-LLC", "url": "https://TradingExpo.com"}}]}
+</script>
 </head>
-<body data-page="portal">
-<div id="siteHeader"></div>
+<body class="pbody">
 
-<main>
-<section class="page-hero">
-  <div class="container">
-    <p class="eyebrow reveal">Portal</p>
-    <h1 class="reveal">Your expo, <span class="grad">managed.</span></h1>
-    <p class="section-lead reveal">Ticket holders download tickets and get event updates. Exhibitors manage their booth, team and branding. One login for everything.</p>
-  </div>
-</section>
+<!-- ============ LOGIN VIEW ============ -->
+<div id="portalLogin" class="login-view">
+  <aside class="login-brand">
+    <div class="login-brand-inner">
+      <img class="login-logo" src="assets/logo-light.png" alt="Trading Expo India 2027">
+      <p class="login-eyebrow">ProFX Media FZ-LLC presents</p>
+      <h1>Trading Expo India 2027</h1>
+      <p class="login-dates">23–24 April 2027 · India</p>
+      <div class="login-stats">
+        <div><strong>10,000+</strong><span>Visitors</span></div>
+        <div><strong>80+</strong><span>Exhibitors</span></div>
+        <div><strong>80+</strong><span>Speakers</span></div>
+      </div>
+      <p class="login-demo-note">Demo preview — bookings are stored in this browser only, no real server is connected yet.</p>
+    </div>
+  </aside>
 
-<section class="section">
-  <div class="container narrow">
+  <div class="login-main">
+    <div class="login-card">
+      <p class="login-card-eyebrow">Event Portal</p>
+      <h2>Welcome back</h2>
+      <p class="login-card-sub">Choose your role to sign in to your dashboard.</p>
 
-    <div id="portalLogin" class="portal-card reveal">
       <div class="role-tabs" role="tablist">
-        <button type="button" class="role-tab active" data-role="attendee" role="tab">Ticket / Exhibitor Login</button>
-        <button type="button" class="role-tab" data-role="admin" role="tab">Admin Login</button>
+        <button type="button" class="role-tab" data-role="admin" role="tab">Admin</button>
+        <button type="button" class="role-tab active" data-role="exhibitor" role="tab">Exhibitor</button>
+        <button type="button" class="role-tab" data-role="ticket" role="tab">Ticket Holder</button>
       </div>
 
-      <form id="attendeeForm" class="portal-form">
+      <form id="bookingForm" class="portal-form">
         <label>Booking reference
-          <input id="portalRef" type="text" placeholder="e.g. TXI27-AB12CD" autocomplete="off" required>
+          <input id="portalRef" type="text" placeholder="e.g. EXB27-AB12CD" autocomplete="off" required>
         </label>
         <label>Password
           <input id="portalPass" type="password" placeholder="Shown on your booking confirmation" autocomplete="current-password" required>
         </label>
-        <button class="btn btn-primary btn-lg btn-block" type="submit">Log In</button>
-        <p class="form-note">Your reference and password were shown when you booked — and emailed to you. New here? <a href="tickets.html">Book a ticket</a> or <a href="exhibit.html">reserve a booth</a>.</p>
+        <button class="btn btn-primary btn-lg btn-block" type="submit">Log In to Dashboard</button>
+        <p class="form-note">Your reference and password were shown when you booked. New here? <a href="tickets.html">Book a ticket</a> or <a href="exhibit.html">reserve a booth</a>.</p>
       </form>
 
       <form id="adminForm" class="portal-form" hidden>
@@ -68,29 +90,112 @@
         <div><span>Ticket holder</span><code>TXI27-DEMO / demo123</code></div>
       </div>
     </div>
+    <p class="login-foot"><a href="index.html">← Back to website</a></p>
+  </div>
+</div>
 
-    <div id="portalDash" hidden>
-      <div class="dash-head">
-        <div>
-          <p class="eyebrow" id="pdRole">Portal</p>
-          <h2 id="pdTitle">Welcome</h2>
-          <p class="muted" id="pdSub"></p>
-        </div>
-        <button class="btn btn-ghost btn-sm" id="portalLogout" type="button">Log out</button>
+<!-- ============ APP SHELL ============ -->
+<div id="portalDash" class="app" hidden>
+  <div id="sideScrim" class="side-scrim" hidden></div>
+  <aside id="sideBar" class="sidebar">
+    <div class="side-top">
+      <img src="assets/logo-light-compact.png" alt="Trading Expo" class="side-logo">
+      <span class="role-badge" id="sideRole">Portal</span>
+    </div>
+    <nav class="side-nav" id="sideNav"></nav>
+    <div class="side-foot">
+      <div class="side-user" id="sideUser">
+        <span class="avatar" id="sideAvatar">?</span>
+        <div><strong id="sideUserName">—</strong><span id="sideUserRef">—</span></div>
       </div>
-      <nav class="portal-tabs" id="portalTabs"></nav>
-      <div id="portalPanels"></div>
+    </div>
+  </aside>
+
+  <div class="app-main">
+    <header class="topbar">
+      <button class="icon-btn menu-btn" id="menuBtn" type="button" aria-label="Open menu">☰</button>
+      <div class="search-wrap">
+        <input id="globalSearch" type="search" placeholder="Search bookings, leads, team…" autocomplete="off">
+      </div>
+      <div class="notif-wrap">
+        <button class="icon-btn" id="notifBtn" type="button" aria-label="Notifications">🔔<span class="notif-dot" id="notifDot" hidden></span></button>
+        <div class="notif-drop" id="notifDrop" hidden></div>
+      </div>
+      <div class="user-chip" id="userChip"><span class="avatar" id="topAvatar">?</span><span id="topUserName">—</span></div>
+      <button class="btn btn-ghost btn-sm" id="portalLogout" type="button">Log out</button>
+    </header>
+
+    <div class="page-head">
+      <div>
+        <p class="eyebrow" id="pdRole">Portal</p>
+        <h1 id="pdTitle">Welcome</h1>
+        <p class="page-sub" id="pdSub"></p>
+      </div>
+      <div class="page-actions" id="pageActions"></div>
     </div>
 
-    <div id="portalToast" class="portal-toast" role="status"></div>
+    <main id="portalPanels" class="content"></main>
+  </div>
+</div>
 
+
+<!-- ============ DRAWER ============ -->
+<div id="drawerWrap" class="drawer-wrap" hidden>
+  <div class="drawer-scrim" id="drawerScrim"></div>
+  <aside class="drawer" id="drawer" role="dialog" aria-label="Details"></aside>
+</div>
+
+<div id="portalToast" class="portal-toast" role="status"></div>
+
+<!-- AEO-FAQ-START -->
+<section class="aeo-faq" aria-label="Frequently asked questions">
+  <div class="container">
+    <h2 class="aeo-faq-title">Frequently Asked Questions</h2>
+    <details class="aeo-faq-item">
+<summary class="aeo-faq-q">What is the Trading Expo India 2027 portal?</summary>
+<p class="aeo-faq-a">The portal is your personal dashboard for the expo, with separate logins for ticket holders, exhibitors and admins. Ticket holders manage tickets and announcements; exhibitors manage booths, badges, branding and documents; admins oversee bookings and communications. One login gives you everything related to your role.</p>
+</details>
+    <details class="aeo-faq-item">
+<summary class="aeo-faq-q">How do I log in to the portal?</summary>
+<p class="aeo-faq-a">Go to the portal page and choose your role — ticket holder, exhibitor or admin — then enter your booking reference or exhibitor ID and password. Your credentials are issued when you book a ticket or confirm a booth. Keep them safe: you will use the same login before, during and after the event.</p>
+</details>
+    <details class="aeo-faq-item">
+<summary class="aeo-faq-q">I forgot my portal password — what do I do?</summary>
+<p class="aeo-faq-a">Use the password recovery option on the portal login screen, or contact support through the contact page with your booking reference or exhibitor ID. The team will verify your identity and reset your access. To avoid delays, save your credentials securely when you first receive them after booking.</p>
+</details>
+    <details class="aeo-faq-item">
+<summary class="aeo-faq-q">What can ticket holders do in the portal?</summary>
+<p class="aeo-faq-a">Ticket holders can view and download their tickets anytime, check event announcements, see the program schedule, find venue and travel updates, and access exclusive promotions. Your booking reference is your key — log in before the event to make sure your ticket details are correct and ready for entry.</p>
+</details>
+    <details class="aeo-faq-item">
+<summary class="aeo-faq-q">What can exhibitors do in the portal?</summary>
+<p class="aeo-faq-a">Exhibitors get a full workspace: update the company profile and directory listing, manage team members and badges, upload logos and branding assets, track the readiness checklist, download contracts and logistics documents, and receive organizer announcements. It is designed so your whole team can prepare without endless email threads.</p>
+</details>
+    <details class="aeo-faq-item">
+<summary class="aeo-faq-q">What does the admin portal do?</summary>
+<p class="aeo-faq-a">The admin portal gives the organizing team a live overview: ticket bookings and revenue summaries, exhibitor and sponsor records, announcement publishing to all portal users, and booking support tools. It is restricted to authorized ProFX Media FZ-LLC team members and keeps every operational detail in one secure place.</p>
+</details>
+    <details class="aeo-faq-item">
+<summary class="aeo-faq-q">Is my data safe in the portal?</summary>
+<p class="aeo-faq-a">Yes. The portal uses secure logins, and your personal and booking data is handled according to the event&#x27;s privacy policy — used only for event operations like ticketing, entry and communications. Payment processing follows industry security standards. Never share your portal password, and always log out on shared devices.</p>
+</details>
+    <details class="aeo-faq-item">
+<summary class="aeo-faq-q">Can I use the portal on my phone?</summary>
+<p class="aeo-faq-a">Yes — the portal is fully mobile-friendly, so you can log in from your phone or tablet as well as your desktop. That is especially handy on event days: pull up your ticket at entry, check announcements and find your way around without printing anything. Just keep your login credentials saved securely.</p>
+</details>
   </div>
 </section>
-</main>
+<!-- AEO-FAQ-END -->
+
+<!-- AEO-FAQ-SCHEMA-START -->
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What is the Trading Expo India 2027 portal?", "acceptedAnswer": {"@type": "Answer", "text": "The portal is your personal dashboard for the expo, with separate logins for ticket holders, exhibitors and admins. Ticket holders manage tickets and announcements; exhibitors manage booths, badges, branding and documents; admins oversee bookings and communications. One login gives you everything related to your role."}}, {"@type": "Question", "name": "How do I log in to the portal?", "acceptedAnswer": {"@type": "Answer", "text": "Go to the portal page and choose your role — ticket holder, exhibitor or admin — then enter your booking reference or exhibitor ID and password. Your credentials are issued when you book a ticket or confirm a booth. Keep them safe: you will use the same login before, during and after the event."}}, {"@type": "Question", "name": "I forgot my portal password — what do I do?", "acceptedAnswer": {"@type": "Answer", "text": "Use the password recovery option on the portal login screen, or contact support through the contact page with your booking reference or exhibitor ID. The team will verify your identity and reset your access. To avoid delays, save your credentials securely when you first receive them after booking."}}, {"@type": "Question", "name": "What can ticket holders do in the portal?", "acceptedAnswer": {"@type": "Answer", "text": "Ticket holders can view and download their tickets anytime, check event announcements, see the program schedule, find venue and travel updates, and access exclusive promotions. Your booking reference is your key — log in before the event to make sure your ticket details are correct and ready for entry."}}, {"@type": "Question", "name": "What can exhibitors do in the portal?", "acceptedAnswer": {"@type": "Answer", "text": "Exhibitors get a full workspace: update the company profile and directory listing, manage team members and badges, upload logos and branding assets, track the readiness checklist, download contracts and logistics documents, and receive organizer announcements. It is designed so your whole team can prepare without endless email threads."}}, {"@type": "Question", "name": "What does the admin portal do?", "acceptedAnswer": {"@type": "Answer", "text": "The admin portal gives the organizing team a live overview: ticket bookings and revenue summaries, exhibitor and sponsor records, announcement publishing to all portal users, and booking support tools. It is restricted to authorized ProFX Media FZ-LLC team members and keeps every operational detail in one secure place."}}, {"@type": "Question", "name": "Is my data safe in the portal?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The portal uses secure logins, and your personal and booking data is handled according to the event's privacy policy — used only for event operations like ticketing, entry and communications. Payment processing follows industry security standards. Never share your portal password, and always log out on shared devices."}}, {"@type": "Question", "name": "Can I use the portal on my phone?", "acceptedAnswer": {"@type": "Answer", "text": "Yes — the portal is fully mobile-friendly, so you can log in from your phone or tablet as well as your desktop. That is especially handy on event days: pull up your ticket at entry, check announcements and find your way around without printing anything. Just keep your login credentials saved securely."}}]}
+</script>
+<!-- AEO-FAQ-SCHEMA-END -->
 
 <div id="siteFooter"></div>
 <button class="to-top" id="toTop" aria-label="Back to top">↑</button>
 <script src="script.js?v=20260925a"></script>
-<script src="portal.js?v=20260925a"></script>
+<script src="portal.js?v=20260925b"></script>
 </body>
 </html>

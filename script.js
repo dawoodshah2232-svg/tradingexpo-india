@@ -11,6 +11,7 @@
     ["venue.html", "venue", "Venue"],
     ["gallery.html", "gallery", "Gallery"],
     ["sponsors.html", "sponsors", "Sponsors"],
+    ["awards.html", "awards", "Awards"],
     ["blog.html", "blog", "Blog"],
     ["faq.html", "faq", "FAQ"],
     ["contact.html", "contact", "Contact"]
@@ -47,7 +48,7 @@
         '<img class="footer-logo theme-logo" src="assets/logo-dark.png" data-logo-dark="assets/logo-dark.png" data-logo-light="assets/logo-light.png" alt="Trading Expo India"></a>' +
         "<p>India's premier online trading, fintech &amp; financial markets exhibition.<br>23–24 April 2027.</p></div>" +
         '<nav class="footer-col" aria-label="Event"><h4>Event</h4>' +
-        '<a href="index.html">Home</a><a href="agenda.html">Agenda</a><a href="venue.html">Venue</a><a href="gallery.html">Gallery</a><a href="tickets.html">Tickets</a><a href="faq.html">FAQ</a><a href="blog.html">Blog</a></nav>' +
+        '<a href="index.html">Home</a><a href="agenda.html">Agenda</a><a href="venue.html">Venue</a><a href="gallery.html">Gallery</a><a href="awards.html">Awards</a><a href="tickets.html">Tickets</a><a href="faq.html">FAQ</a><a href="blog.html">Blog</a></nav>' +
         '<nav class="footer-col" aria-label="Participate"><h4>Participate</h4>' +
         '<a href="exhibit.html">Exhibit</a><a href="sponsors.html">Sponsor</a><a href="contact.html">Speak</a><a href="sponsors.html">Partners</a><a href="portal.html">Exhibitor Portal</a></nav>' +
         '<div class="footer-col"><h4>Event Info</h4>' +
@@ -511,4 +512,68 @@
   if (!b) return;
   window.addEventListener('scroll', () => b.classList.toggle('show', window.scrollY > 900), { passive: true });
   b.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+})();
+/* v4: market ticker (illustrative sample data), scroll progress, hero parallax */
+(function () {
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ----- Sample market snapshot ticker (illustrative data, not live) ----- */
+  var MKT = [
+    ["EUR/USD", "1.0924", "+0.12%", "up"], ["GBP/USD", "1.2741", "-0.08%", "dn"],
+    ["USD/JPY", "151.32", "+0.21%", "up"], ["USD/INR", "86.45", "-0.05%", "dn"],
+    ["BTC/USD", "97,450", "+1.84%", "up"], ["ETH/USD", "3,620", "+2.15%", "up"],
+    ["XAU/USD", "2,912.40", "+0.34%", "up"], ["Nifty 50", "26,180.55", "+0.42%", "up"]
+  ];
+  var tracks = document.querySelectorAll("[data-mkt]");
+  tracks.forEach(function (track) {
+    var html = "";
+    for (var r = 0; r < 2; r++) { /* duplicated for a seamless CSS loop */
+      MKT.forEach(function (m) {
+        var arrow = m[3] === "up" ? "▲" : "▼";
+        html += '<span class="mkt-item"><span class="sym">' + m[0] + '</span><span class="px">' + m[1] + '</span>' +
+                '<span class="mv ' + m[3] + '">' + arrow + " " + m[2] + "</span></span>";
+      });
+    }
+    track.innerHTML = html;
+  });
+
+  /* ----- Scroll progress bar ----- */
+  var bar = document.createElement("div");
+  bar.className = "scroll-progress";
+  bar.setAttribute("aria-hidden", "true");
+  document.body.appendChild(bar);
+
+  /* ----- Subtle parallax on [data-parallax] layers and [data-parallax-img] ----- */
+  var layers = Array.prototype.slice.call(document.querySelectorAll("[data-parallax]"));
+  var imgs = Array.prototype.slice.call(document.querySelectorAll("[data-parallax-img]"));
+  var ticking = false;
+
+  function update() {
+    ticking = false;
+    var vh = window.innerHeight;
+    var st = window.scrollY || window.pageYOffset;
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    bar.style.transform = "scaleX(" + (max > 0 ? Math.min(Math.max(st / max, 0), 1) : 0).toFixed(4) + ")";
+    if (reduce) return;
+    layers.forEach(function (el) {
+      var r = el.parentElement.getBoundingClientRect();
+      if (r.bottom < -80 || r.top > vh + 80) return;
+      var sp = parseFloat(el.getAttribute("data-parallax")) || 0.2;
+      var off = (r.top + r.height / 2 - vh / 2) * -sp * 0.6;
+      el.style.transform = "translateY(" + off.toFixed(1) + "px)";
+    });
+    imgs.forEach(function (img) {
+      var r = img.getBoundingClientRect();
+      if (r.bottom < -80 || r.top > vh + 80) return;
+      var p = (r.top + r.height / 2 - vh / 2) / (vh + r.height);
+      img.style.transform = "translateY(" + (p * 12).toFixed(2) + "%) scale(1.12)";
+    });
+  }
+  function request() {
+    if (!ticking) { ticking = true; requestAnimationFrame(update); }
+  }
+  window.addEventListener("scroll", request, { passive: true });
+  window.addEventListener("resize", request);
+  update();
 })();
