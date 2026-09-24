@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Book Tickets — Trading Expo India 2027</title>
+<meta name="description" content="Book your pass for Trading Expo India 2027 — Trader ₹249, Pro Trader ₹999, VIP ₹2,499 early bird. 23–24 April 2027, India.">
+<meta property="og:title" content="Book Tickets — Trading Expo India 2027">
+<meta property="og:description" content="Early bird passes now live. Trader ₹249 · Pro Trader ₹999 · VIP ₹2,499.">
+<meta property="og:image" content="assets/og-image.png">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=20260925a">
+</head>
+<body data-page="tickets">
+<div id="siteHeader"></div>
+
+<main>
+<section class="page-hero">
+  <div class="container">
+    <p class="eyebrow reveal">Tickets</p>
+    <h1 class="reveal">Book your pass.</h1>
+    <p class="section-lead reveal">Early bird pricing is live now — reserve in under a minute. No payment taken today; pay when our team sends your link.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container narrow">
+    <div class="booking" id="ticketBooking" data-ref-prefix="TXI27" data-store-key="txi_bookings">
+      <ol class="bsteps">
+        <li class="active" data-s="1"><span>1</span>Choose pass</li>
+        <li data-s="2"><span>2</span>Your details</li>
+        <li data-s="3"><span>3</span>Confirmed</li>
+      </ol>
+
+      <div class="bstep active" data-step="1">
+        <div class="pick-grid">
+          <button type="button" class="pick-card" data-name="Trader Pass" data-price="249">
+            <strong>Trader Pass</strong>
+            <span class="p">₹249 <em>early bird</em></span>
+            <span class="was">Regular ₹499</span>
+            <span class="d">2-day exhibition access · booths · demos · networking areas · digital badge</span>
+          </button>
+          <button type="button" class="pick-card" data-name="Pro Trader Pass" data-price="999">
+            <strong>Pro Trader Pass</strong><span class="tag">Most popular</span>
+            <span class="p">₹999 <em>early bird</em></span>
+            <span class="was">Regular ₹1,499</span>
+            <span class="d">Everything in Trader, plus full conference access · priority seating · fast-track entry</span>
+          </button>
+          <button type="button" class="pick-card" data-name="VIP Pass" data-price="2499">
+            <strong>VIP Pass</strong>
+            <span class="p">₹2,499 <em>early bird</em></span>
+            <span class="was">Regular ₹3,999</span>
+            <span class="d">Everything in Pro, plus VIP lounge · reserved seating · exclusive networking</span>
+          </button>
+        </div>
+        <div class="qty-row">
+          <span>Quantity</span>
+          <div class="qty">
+            <button type="button" data-q="-1" aria-label="Decrease">−</button>
+            <b data-qty>1</b>
+            <button type="button" data-q="1" aria-label="Increase">+</button>
+          </div>
+        </div>
+        <div class="b-total">Total <strong data-total>—</strong><span> · no payment taken now</span></div>
+        <button class="btn btn-primary btn-lg btn-block" type="button" data-next="2">Continue</button>
+      </div>
+
+      <div class="bstep" data-step="2">
+        <div class="form-grid">
+          <label>Full name<input required name="name" type="text" placeholder="Your name" autocomplete="name"></label>
+          <label>Email<input required name="email" type="email" placeholder="you@email.com" autocomplete="email"></label>
+          <label>Phone<input required name="phone" type="tel" placeholder="+91 ..." autocomplete="tel"></label>
+          <label>City<input name="city" type="text" placeholder="City"></label>
+        </div>
+        <div class="bnav">
+          <button class="btn btn-ghost" type="button" data-back="1">Back</button>
+          <button class="btn btn-primary btn-lg" type="button" data-next="3">Reserve my passes</button>
+        </div>
+        <p class="form-note">By reserving you agree to be contacted about payment and event updates.</p>
+      </div>
+
+      <div class="bstep" data-step="3">
+        <div class="confirm-card">
+          <div class="confirm-check">✓</div>
+          <h3>Booking reserved!</h3>
+          <p class="ref">Booking reference<br><strong data-ref></strong></p>
+          <div class="summary" data-summary></div>
+          <p class="portal-creds">Your portal login — keep these safe<br>Reference <strong data-ref2></strong> &nbsp;·&nbsp; Password <strong data-pass></strong></p>
+          <p class="fine">No payment was taken. A confirmation email with your ticket will be sent to <strong data-email></strong> automatically. Your early-bird price is locked for 48 hours — and you can log in to the <a href="portal.html">portal</a> anytime to download your ticket.</p>
+          <div class="bnav center">
+            <a class="btn btn-ghost" href="portal.html">Go to Portal</a>
+            <a class="btn btn-ghost" href="tickets.html">New booking</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="container">
+    <div class="lucky-strip reveal">
+      <div class="lucky-glow" aria-hidden="true"></div>
+      <div>
+        <strong>Lucky Draw — every ticket is an entry</strong>
+        <span>All ticket holders are automatically entered into the Trading Expo lucky draw on Day 2.</span>
+      </div>
+    </div>
+    <div class="group-banner reveal">
+      <div>
+        <h3>Coming with your community or team?</h3>
+        <p>Special group packages for trading communities, colleges &amp; universities, corporate teams, financial academies and affiliate networks.</p>
+      </div>
+      <a href="contact.html" class="btn btn-ghost">Enquire for Group Tickets</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<div id="siteFooter"></div>
+<button class="to-top" id="toTop" aria-label="Back to top">↑</button>
+<script src="script.js?v=20260925a"></script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portal — Trading Expo India 2027</title>
+<meta name="description" content="Log in to the Trading Expo India 2027 portal — manage your tickets, exhibitor booking, team badges and brand uploads.">
+<meta property="og:title" content="Portal — Trading Expo India 2027">
+<meta property="og:description" content="Ticket holders, exhibitors and admins — manage everything in one place.">
+<meta property="og:image" content="assets/og-image.png">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=20260925a">
+</head>
+<body data-page="portal">
+<div id="siteHeader"></div>
+
+<main>
+<section class="page-hero">
+  <div class="container">
+    <p class="eyebrow reveal">Portal</p>
+    <h1 class="reveal">Your expo, <span class="grad">managed.</span></h1>
+    <p class="section-lead reveal">Ticket holders download tickets and get event updates. Exhibitors manage their booth, team and branding. One login for everything.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container narrow">
+
+    <div id="portalLogin" class="portal-card reveal">
+      <div class="role-tabs" role="tablist">
+        <button type="button" class="role-tab active" data-role="attendee" role="tab">Ticket / Exhibitor Login</button>
+        <button type="button" class="role-tab" data-role="admin" role="tab">Admin Login</button>
+      </div>
+
+      <form id="attendeeForm" class="portal-form">
+        <label>Booking reference
+          <input id="portalRef" type="text" placeholder="e.g. TXI27-AB12CD" autocomplete="off" required>
+        </label>
+        <label>Password
+          <input id="portalPass" type="password" placeholder="Shown on your booking confirmation" autocomplete="current-password" required>
+        </label>
+        <button class="btn btn-primary btn-lg btn-block" type="submit">Log In</button>
+        <p class="form-note">Your reference and password were shown when you booked — and emailed to you. New here? <a href="tickets.html">Book a ticket</a> or <a href="exhibit.html">reserve a booth</a>.</p>
+      </form>
+
+      <form id="adminForm" class="portal-form" hidden>
+        <label>Admin username
+          <input id="adminUser" type="text" placeholder="admin" autocomplete="username" required>
+        </label>
+        <label>Admin password
+          <input id="adminPass" type="password" placeholder="••••••" autocomplete="current-password" required>
+        </label>
+        <button class="btn btn-primary btn-lg btn-block" type="submit">Log In as Admin</button>
+      </form>
+
+      <p id="portalError" class="portal-error" hidden></p>
+
+      <div class="demo-box">
+        <strong>Demo logins for review</strong>
+        <div><span>Admin</span><code>admin / expo2027</code></div>
+        <div><span>Exhibitor</span><code>EXB27-DEMO / demo123</code></div>
+        <div><span>Ticket holder</span><code>TXI27-DEMO / demo123</code></div>
+      </div>
+    </div>
+
+    <div id="portalDash" hidden>
+      <div class="dash-head">
+        <div>
+          <p class="eyebrow" id="pdRole">Portal</p>
+          <h2 id="pdTitle">Welcome</h2>
+          <p class="muted" id="pdSub"></p>
+        </div>
+        <button class="btn btn-ghost btn-sm" id="portalLogout" type="button">Log out</button>
+      </div>
+      <nav class="portal-tabs" id="portalTabs"></nav>
+      <div id="portalPanels"></div>
+    </div>
+
+    <div id="portalToast" class="portal-toast" role="status"></div>
+
+  </div>
+</section>
+</main>
+
+<div id="siteFooter"></div>
+<button class="to-top" id="toTop" aria-label="Back to top">↑</button>
+<script src="script.js?v=20260925a"></script>
+<script src="portal.js?v=20260925a"></script>
+</body>
+</html>
