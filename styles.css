@@ -174,9 +174,9 @@ html[data-theme="light"] .icon-sun { display: block; }
 
 /* ---------- Hero ---------- */
 .hero { position: relative; min-height: 100svh; display: flex; align-items: center; justify-content: center; overflow: hidden; text-align: center; padding: calc(var(--nav-h) + 40px) 0 90px; }
-.hero-bg { position: absolute; inset: -12% 0; background: url("assets/img/hero-expo.jpg") center 35% / cover no-repeat; will-change: transform; }
-.hero-shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.62) 0%, rgba(0,0,0,0.35) 45%, var(--bg) 98%); }
-html[data-theme="light"] .hero-shade { background: linear-gradient(180deg, rgba(244,248,250,0.72) 0%, rgba(244,248,250,0.5) 45%, var(--bg) 98%); }
+.hero-bg { position: absolute; inset: -12% 0; background: url("assets/img/expo-grand-hall.jpg") center 40% / cover no-repeat; will-change: transform; }
+.hero-shade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(4,10,20,0.52) 0%, rgba(4,10,20,0.22) 45%, var(--bg) 98%); }
+html[data-theme="light"] .hero-shade { background: linear-gradient(180deg, rgba(244,248,250,0.58) 0%, rgba(244,248,250,0.32) 45%, var(--bg) 98%); }
 .hero-inner { position: relative; z-index: 2; max-width: 1000px; padding: 0 28px; }
 .hero-badge { display: inline-flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 600; letter-spacing: 0.08em; padding: 11px 24px; border-radius: 980px; border: 1px solid rgba(255,255,255,0.25); background: rgba(255,255,255,0.08); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); color: #fff; margin-bottom: 36px; box-shadow: 0 8px 30px rgba(0,0,0,0.3); }
 html[data-theme="light"] .hero-badge { border-color: var(--border); background: var(--card); color: var(--text); }
