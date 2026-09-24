@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Algo Trading in India: A Retail Trader's Guide for 2026 — Trading Expo India 2027</title>
+<meta name="description" content="Algo trading in India explained: API trading, SEBI's evolving algo framework, costs, realistic expectations, and how retail traders can start.">
+<meta property="og:title" content="Algo Trading in India: A Retail Trader's Guide for 2026">
+<meta property="og:description" content="Algo trading in India explained: API trading, SEBI's evolving algo framework, costs, realistic expectations, and how retail traders can start.">
+<meta property="og:image" content="../assets/og-image.png">
+<meta property="og:type" content="article">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css?v=20260925a">
+<style>
+.txi-byline{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin:20px 0 34px;padding:16px 22px;border:1px solid var(--border,#232b34);border-radius:14px;font-size:.9rem;color:var(--muted,#9aa3ad)}
+.txi-article{max-width:760px;margin:0 auto}
+.txi-article p{line-height:1.85;margin:0 0 1.4em;font-size:1.02rem}
+.txi-article h2{font-size:1.5rem;margin:2.2em 0 .8em;line-height:1.35}
+.txi-article ul{margin:0 0 1.6em;padding-left:1.3em;line-height:1.85}
+.txi-article li{margin-bottom:.5em}
+.txi-article blockquote{border-left:3px solid #00C853;padding:.4em 0 .4em 1.2em;margin:2em 0;font-size:1.15rem;font-weight:600;line-height:1.65}
+.txi-article figure{margin:2.4em 0}
+.txi-article figure img{width:100%;border-radius:16px;display:block}
+.txi-article figcaption{font-size:.85rem;color:var(--muted,#9aa3ad);margin-top:10px;text-align:center}
+.txi-cta-box{background:linear-gradient(135deg,rgba(0,200,83,.12),rgba(0,168,107,.05));border:1px solid rgba(0,200,83,.3);border-radius:18px;padding:38px 30px;margin:3em 0;text-align:center}
+.txi-cta-box h3{margin:0 0 .6em;font-size:1.4rem}
+.txi-cta-box p{margin:0 0 1.5em;color:var(--muted,#9aa3ad)}
+.txi-back{display:inline-block;margin:0 0 2em;text-decoration:none;font-weight:600;font-size:.95rem}
+.txi-faq details{border:1px solid var(--border,#232b34);border-radius:12px;margin-bottom:12px;overflow:hidden}
+.txi-faq summary{cursor:pointer;padding:16px 20px;font-weight:700;font-size:1rem;list-style:none}
+.txi-faq summary::-webkit-details-marker{display:none}
+.txi-faq summary::after{content:"+";float:right;color:#00C853;font-size:1.3rem;line-height:1}
+.txi-faq details[open] summary::after{content:"\2212"}
+.txi-faq details p{padding:0 20px 18px;margin:0;color:var(--muted,#9aa3ad);font-size:.96rem}
+.txi-related{background:var(--card,#10151b);border:1px solid var(--border,#232b34);border-radius:16px;padding:28px;margin:3em 0}
+.txi-related h3{margin:0 0 1em;font-size:1.15rem}
+.txi-related ul{margin:0;padding-left:1.2em}
+.txi-related a{text-decoration:none;font-weight:600}
+.txi-related a:hover{color:#00C853}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Algo Trading in India: A Retail Trader's Guide for 2026",
+  "description": "Algo trading in India explained: API trading, SEBI's evolving algo framework, costs, realistic expectations, and how retail traders can start.",
+  "datePublished": "2026-09-24",
+  "author": {
+    "@type": "Organization",
+    "name": "Trading Expo India"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is algo trading legal for retail traders in India?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, through compliant channels — broker-provided APIs and approved algo products under SEBI's evolving framework. Unregulated third-party algo services making return promises should be avoided."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need to know coding for algo trading?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For custom strategies, yes — Python is the standard. Non-coders can use strategy marketplaces and no-code platforms, but should understand enough to evaluate what they're deploying."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much capital do I need for algo trading?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Beyond trading capital, budget for data/API fees and infrastructure. Start small: automate one proven manual strategy with modest size before scaling anything."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body data-page="blog">
+<div id="siteHeader"></div>
+<main>
+<section class="page-hero"><div class="container">
+<p class="eyebrow">Blog &middot; Fintech Trends</p>
+<h1>Algo Trading in India: A Retail Trader's Guide for 2026</h1>
+<div class="txi-byline"><span><strong>Trading Expo India editorial team</strong></span><span>&middot;</span><span>September 24, 2026</span><span>&middot;</span><span>3 min read</span></div>
+</div></section>
+<section class="section"><div class="container"><div class="txi-article">
+<p><a class="txi-back" href="../blog.html">&larr; Back to all articles</a></p>
+<figure>
+<img src="../assets/img/expo-networking.jpg" alt="Algo Trading in India: A Retail Trader's Guide for 2026" loading="lazy">
+<figcaption>Trading Expo India 2027 &mdash; 23&ndash;24 April 2027, India.</figcaption>
+</figure>
+<p>Algorithmic trading executes the majority of exchange volumes in developed markets, and India's algo ecosystem has matured rapidly — retail API offerings, strategy marketplaces and evolving SEBI oversight. For retail traders, the question is practical: what slice of this is actually accessible and useful?</p>
+<p>Here is an honest map of retail algo trading in India in 2026.</p>
+<h2>What retail algos can realistically do</h2>
+<p>Retail algo trading in India typically means API-based execution: your code places orders through your broker's API based on defined rules — automating entries, exits and risk management for strategies you already trade manually. Strategy marketplaces let non-coders deploy pre-built algos, though 'pre-built profitable strategy' claims deserve extreme scepticism.</p>
+<p>What retail algos cannot do is compete with institutional high-frequency trading on speed. Your edge, if any, comes from disciplined systematic execution of sound strategies — not from latency.</p>
+<h2>Regulation: SEBI's evolving framework</h2>
+<p>SEBI has progressively tightened oversight of algorithmic trading — covering order-to-trade ratios, kill switches, algo approvals and, more recently, frameworks extending to retail algo products offered through brokers. The direction is clear: retail access continues, but inside supervised structures with audit trails and risk controls.</p>
+<p>Trade only through compliant channels: broker-offered APIs and approved algo products. 'Unofficial' algo services promising exchange-beating returns operate outside this framework and carry both financial and regulatory risk.</p>
+<h2>Costs, skills and realistic expectations</h2>
+<p>Budget for API/data subscription costs, a VPS for reliable execution, and — biggest of all — the learning curve: basic programming (Python dominates), backtesting discipline, and the statistical literacy to avoid overfitting. Most retail algos fail not from bad code but from strategies curve-fit to historical noise.</p>
+<p>Start by automating one simple, already-profitable manual strategy. If you cannot trade it profitably by hand, code will only lose money faster.</p>
+<h2>Backtesting without fooling yourself: overfitting explained</h2>
+<p>Overfitting — tuning a strategy until it perfectly describes historical noise — is the silent killer of retail algos. The symptoms: spectacular backtest equity curves, dozens of optimised parameters, and live performance that immediately disappoints. The mechanism is statistical: with enough parameters, any strategy can be curve-fit to any historical dataset, capturing randomness that will never repeat. A strategy with fifteen tuned filters that made 200% in backtest has learned the past, not the future. Professionals defend against this with out-of-sample testing (optimise on one period, validate on untouched data), walk-forward analysis, and a strong preference for simple strategies with few parameters and clear economic logic.</p>
+<p>Apply the robustness checklist before deploying capital: does the strategy work across multiple instruments and time periods, or only one cherry-picked window? Does performance survive realistic costs, slippage and the bid-ask spread? Does removing any single parameter destroy the edge (fragility) or merely dent it (robustness)? Start with paper trading the algo for at least a month — live data has a way of humbling backtests. And size the first deployment small enough that a complete failure is tuition, not trauma. In algo trading, humility is not a virtue; it is a risk control.</p>
+<h2>Algo tech at the 2027 expo</h2>
+<p>Trading technology — including algo platforms, APIs and automation tools — is a major theme at <a href="../index.html">Trading Expo India 2027</a> (23–24 April 2027), with 70–80 exhibitors demonstrating their offerings.</p>
+<p>Compare platforms hands-on at the <a href="../exhibit.html">exhibition</a> and attend fintech sessions on the <a href="../agenda.html">agenda</a>. <a href="../tickets.html">Book your pass</a>.</p>
+<h2>Frequently asked questions</h2>
+<div class="txi-faq">
+<details><summary>Is algo trading legal for retail traders in India?</summary><p>Yes, through compliant channels — broker-provided APIs and approved algo products under SEBI's evolving framework. Unregulated third-party algo services making return promises should be avoided.</p></details>
+<details><summary>Do I need to know coding for algo trading?</summary><p>For custom strategies, yes — Python is the standard. Non-coders can use strategy marketplaces and no-code platforms, but should understand enough to evaluate what they're deploying.</p></details>
+<details><summary>How much capital do I need for algo trading?</summary><p>Beyond trading capital, budget for data/API fees and infrastructure. Start small: automate one proven manual strategy with modest size before scaling anything.</p></details>
+</div>
+<div class="txi-related">
+<h3>Related articles</h3>
+<ul>
+<li><a href="ai-tools-traders-2026.html">AI Tools for Traders in 2026: What's Useful vs What's Hype</a></li>
+<li><a href="scalping-strategy-pros-cons.html">Scalping Strategy: The Honest Pros and Cons for Indian Traders</a></li>
+<li><a href="trading-technology-trends-2027.html">Trading Technology Trends 2027: What's Next for Traders</a></li>
+</ul>
+</div>
+<div class="txi-cta-box">
+<h3>Meet the market in person.</h3>
+<p>Join 10,000+ visitors at Trading Expo India 2027, 23&ndash;24 April 2027. Early-bird passes from &#8377;249.</p>
+<p><a class="btn btn-primary btn-lg" href="../tickets.html">Book your ticket</a></p>
+</div>
+<p><a class="txi-back" href="../blog.html">&larr; Back to all articles</a></p>
+</div></div></section>
+</main>
+<div id="siteFooter"></div>
+<button class="to-top" id="toTop" aria-label="Back to top">&#8593;</button>
+<script src="../script.js?v=20260925a"></script>
+</body>
+</html>
