@@ -1,5 +1,35 @@
 [
   {
+    "slug": "comparing-brokers-at-a-trading-expo",
+    "title": "What to Look for When Comparing Brokers at a Trading Expo",
+    "category": "Expo & Events Guide",
+    "img": "hero-expo.jpg",
+    "read": "6 min read",
+    "date": "Sep 25, 2026",
+    "excerpt": "Meet brokers face-to-face at a trading expo and know exactly what to compare: SEBI registration, full fee structures, platforms, support, product range \u2014 and the red flags to walk away from.",
+    "file": "blog/comparing-brokers-at-a-trading-expo.html"
+  },
+  {
+    "slug": "opening-brokerage-account-at-expo",
+    "title": "Should You Open a Brokerage Account at a Trading Expo? A Practical Checklist",
+    "category": "Expo & Events Guide",
+    "img": "brand-rollup.jpg",
+    "read": "6 min read",
+    "date": "Sep 25, 2026",
+    "excerpt": "Expo-only brokerage offers can be genuinely good \u2014 or expensive traps. How to evaluate sign-up deals, what documents to carry, and the checklist to run before you hand over KYC at the booth.",
+    "file": "blog/opening-brokerage-account-at-expo.html"
+  },
+  {
+    "slug": "post-expo-follow-up-guide",
+    "title": "After the Expo: How to Turn Contacts, Notes and Ideas Into Trading Results",
+    "category": "Expo & Events Guide",
+    "img": "brand-signage.jpg",
+    "read": "6 min read",
+    "date": "Sep 25, 2026",
+    "excerpt": "The expo ends but the value starts now: a follow-up system for organising your notes, testing new ideas safely, following up with contacts and brokers, and reviewing what the event earned you.",
+    "file": "blog/post-expo-follow-up-guide.html"
+  },
+  {
     "slug": "india-demat-boom-2026",
     "title": "India's Demat Boom: 237 Million Accounts and the Making of a Trading Nation",
     "category": "India focus",
