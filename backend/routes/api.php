@@ -42,5 +42,6 @@ Route::post('/newsletter', [NewsletterController::class, 'store'])->middleware('
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/auth/logout', [AuthController::class, 'logout']);
     Route::post('/announcements', [AnnouncementController::class, 'store']);
+    Route::delete('/announcements/{announcement}', [AnnouncementController::class, 'destroy']);
     Route::get('/admin/bookings', [AdminBookingController::class, 'index']);
 });

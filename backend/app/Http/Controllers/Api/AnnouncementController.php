@@ -41,4 +41,11 @@ class AnnouncementController extends Controller
 
         return response()->json(['ok' => true, 'id' => $announcement->id], 201);
     }
+
+    public function destroy(Announcement $announcement): JsonResponse
+    {
+        $announcement->delete();
+
+        return response()->json(['ok' => true]);
+    }
 }

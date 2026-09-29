@@ -222,6 +222,32 @@ class ExpoApiTest extends TestCase
         $this->assertSame(1, Announcement::count());
     }
 
+    public function test_announcement_delete_requires_auth_and_removes(): void
+    {
+        $ann = Announcement::create([
+            'title' => 'Old news',
+            'body' => 'stale',
+            'audience' => 'all',
+        ]);
+
+        $this->deleteJson('/api/announcements/' . $ann->id)->assertStatus(401);
+        $this->assertSame(1, Announcement::count());
+
+        $admin = User::create([
+            'name' => 'admin',
+            'email' => 'admin@localhost',
+            'password' => Hash::make('s3cret-admin'),
+            'is_admin' => true,
+        ]);
+        $token = $admin->createToken('test')->plainTextToken;
+
+        $this->withHeader('Authorization', 'Bearer ' . $token)
+            ->deleteJson('/api/announcements/' . $ann->id)
+            ->assertOk()
+            ->assertJson(['ok' => true]);
+        $this->assertSame(0, Announcement::count());
+    }
+
     /* ---------------- Admin bookings ---------------- */
 
     public function test_admin_bookings_requires_auth_and_returns_shape(): void

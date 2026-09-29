@@ -69,6 +69,13 @@ function writeStore(key, val) {
   try { localStorage.setItem(key, JSON.stringify(val)); } catch {}
 }
 
+/* ---------------- Health ---------------- */
+
+export async function apiHealth() {
+  const r = await apiFetch('/api/health');
+  return !(r && r.__demo);
+}
+
 /* ---------------- Bookings (tickets + exhibitor booths) ---------------- */
 
 export async function createBooking(payload) {
@@ -135,6 +142,14 @@ export async function saveAnnouncement(item) {
   const all = readStore('txi_announcements');
   all.unshift({ ...item, id: Date.now(), created_at: new Date().toISOString() });
   writeStore('txi_announcements', all);
+  return { ok: true, demo: true };
+}
+
+export async function deleteAnnouncement(id) {
+  const res = await apiFetch('/api/announcements/' + encodeURIComponent(id), { method: 'DELETE' });
+  if (!res.__demo) return res;
+  const all = readStore('txi_announcements');
+  writeStore('txi_announcements', all.filter((a) => a.id !== id));
   return { ok: true, demo: true };
 }
 
@@ -349,12 +364,13 @@ export function esc(s) {
 /* ---------------- Namespace (used by BookingFlow + PortalPage) ---------------- */
 
 export const api = {
+  apiHealth,
   createBooking, submitBooking,
   portalLogin, bookingLogin, adminLogin, adminLogout,
   getSession, setSession, clearSession,
   readKey, writeKey,
   seedDemoIfEmpty,
-  getAnnouncements, announcements, saveAnnouncement, publishAnnouncement,
+  getAnnouncements, announcements, saveAnnouncement, publishAnnouncement, deleteAnnouncement,
   getAllBookings, adminBookings,
   submitContact, subscribeNewsletter,
   exportCSV,

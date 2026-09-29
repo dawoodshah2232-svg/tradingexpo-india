@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import {
-  portalLogin, getAnnouncements, saveAnnouncement, getAllBookings,
-  money, exportCSV, uid, dstr, dtime, daysToEvent,
+  portalLogin, getAnnouncements, saveAnnouncement, deleteAnnouncement, getAllBookings,
+  money, exportCSV, uid, dstr, dtime, daysToEvent, apiHealth,
   seedDemoIfEmpty as seedDemo,
 } from '../lib/api.js';
 import { useAssetBase } from '../lib/theme.jsx';
@@ -480,8 +480,8 @@ function AdminAnns({ ctx }) {
     ctx.toast('Announcement published.');
     ctx.refresh();
   };
-  const remove = (id) => {
-    write('txi_announcements', read('txi_announcements', []).filter((a) => a.id !== id));
+  const remove = async (id) => {
+    await deleteAnnouncement(id);
     reload();
     ctx.reloadAnns();
     ctx.toast('Announcement deleted.');
@@ -533,9 +533,8 @@ function AdminSettings({ ctx }) {
     let cancelled = false;
     (async () => {
       try {
-        const res = await fetch('api/config.php', { cache: 'no-store' });
-        const j = await res.json().catch(() => null);
-        if (!cancelled) setOk(!!(j && j.ok));
+        const healthy = await apiHealth();
+        if (!cancelled) setOk(!!healthy);
       } catch { if (!cancelled) setOk(false); }
     })();
     return () => { cancelled = true; };
@@ -571,10 +570,10 @@ function AdminSettings({ ctx }) {
         <h3>System status</h3>
         <p className="card-sub">How this portal is currently wired.</p>
         <div className="d-row"><span>Backend</span><strong>{ok === null ? 'Checking…' : ok ? 'Connected ✓' : 'Demo mode (browser storage)'}</strong></div>
-        <div className="d-row"><span>Bookings API</span><strong className="mono">/api/book.php</strong></div>
-        <div className="d-row"><span>Config endpoint</span><strong className="mono">/api/config.php</strong></div>
-        <div className="d-row"><span>Storage</span><strong>localStorage (this browser)</strong></div>
-        <p className="fine">In production these point at the PHP/MySQL backend on the event server. This preview runs entirely in the browser so the flow can be reviewed.</p>
+        <div className="d-row"><span>Bookings API</span><strong className="mono">/api/bookings</strong></div>
+        <div className="d-row"><span>Health endpoint</span><strong className="mono">/api/health</strong></div>
+        <div className="d-row"><span>Storage</span><strong>{ok ? 'MySQL (Laravel 10 API)' : 'localStorage (this browser)'}</strong></div>
+        <p className="fine">In production these point at the Laravel 10 API + MySQL backend on the event server. This preview runs entirely in the browser so the flow can be reviewed.</p>
       </div>
       <div className="card">
         <h3>Data tools</h3>
