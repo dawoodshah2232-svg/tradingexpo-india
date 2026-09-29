@@ -71,6 +71,9 @@ export default function BookingFlow({
     });
     if (!ok) { firstBad?.focus(); return; }
     const data = Object.fromEntries(new FormData(form).entries());
+    /* Honeypot check — a filled trap field means bot; reject silently. */
+    if ((data.website_url || '').trim()) { setError('Something went wrong. Please try again.'); return; }
+    delete data.website_url;
     const chosen = options[pick];
     try {
       const res = await api.submitBooking(apiType, {
@@ -151,6 +154,10 @@ export default function BookingFlow({
       <div className={'bstep' + (step === 2 ? ' active' : '')} data-step="2">
         <form ref={formRef} onSubmit={(e) => e.preventDefault()}>
           <div className="form-grid">{fields || defaultFields}</div>
+          {/* Honeypot: invisible to humans, catches naive bots */}
+          <div className="hp-trap" aria-hidden="true">
+            <label>Company website (leave blank)<input name="website_url" type="text" tabIndex={-1} autoComplete="off" /></label>
+          </div>
         </form>
         {error && <p className="form-note" style={{ color: '#ff6b6b' }}>{error}</p>}
         <div className="bnav">

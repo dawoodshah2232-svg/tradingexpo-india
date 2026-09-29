@@ -1068,3 +1068,13 @@ html[data-theme="light"] .mkt-ticker { background: #0B1F3B; }
   [data-parallax], [data-parallax-img] { transform: none !important; }
   .grad { animation: none; }
 }
+/* Legal pages (privacy / terms) */
+.legal-doc h2 { font-size: 1.35rem; margin: 2.2em 0 0.6em; letter-spacing: -0.01em; }
+.legal-doc h2:first-child { margin-top: 0; }
+.legal-doc p, .legal-doc li { color: var(--text); line-height: 1.75; font-size: 1.02rem; }
+.legal-doc ul { padding-left: 1.3em; margin: 0 0 1.2em; }
+.legal-doc li { margin-bottom: 0.5em; }
+.legal-doc a { color: var(--logo-green); text-decoration: underline; text-underline-offset: 3px; }
+
+/* Honeypot spam trap — visually hidden, unreachable for real users */
+.hp-trap { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }

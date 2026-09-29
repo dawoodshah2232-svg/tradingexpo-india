@@ -11,6 +11,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const pages = [
   'index', 'tickets', 'exhibit', 'agenda', 'venue', 'gallery',
   'sponsors', 'awards', 'blog', 'faq', 'contact', 'portal',
+  'privacy', 'terms',
 ];
 const input = Object.fromEntries(
   pages.map((p) => [p, resolve(__dirname, `${p}.html`)])

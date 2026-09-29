@@ -106,6 +106,7 @@ function Footer({ linkBase }) {
             <a href={linkBase + "index.html"}>Home</a><a href={linkBase + "agenda.html"}>Agenda</a><a href={linkBase + "venue.html"}>Venue</a>
             <a href={linkBase + "gallery.html"}>Gallery</a><a href={linkBase + "awards.html"}>Awards</a><a href={linkBase + "tickets.html"}>Tickets</a>
             <a href={linkBase + "faq.html"}>FAQ</a><a href={linkBase + "blog.html"}>Blog</a>
+            <a href={linkBase + "privacy.html"}>Privacy Policy</a><a href={linkBase + "terms.html"}>Terms &amp; Conditions</a>
           </nav>
           <nav className="footer-col" aria-label="Participate">
             <h4>Participate</h4>
