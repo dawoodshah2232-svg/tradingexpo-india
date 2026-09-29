@@ -1,0 +1,29 @@
+# Dependencies
+frontend/node_modules/
+backend/vendor/
+
+# Build output
+frontend/dist/
+
+# Environment
+backend/.env
+frontend/.env
+frontend/.env.local
+
+# Logs & caches
+*.log
+npm-debug.log*
+backend/storage/logs/
+backend/storage/framework/cache/
+backend/storage/framework/sessions/
+backend/storage/framework/views/
+backend/bootstrap/cache/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Testing
+.phpunit.result.cache
