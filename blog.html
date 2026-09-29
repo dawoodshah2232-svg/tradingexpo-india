@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
+<script>try{var t=localStorage.getItem("txi-theme");document.documentElement.setAttribute("data-theme",t==="light"||t==="dark"?t:"dark")}catch(e){document.documentElement.setAttribute("data-theme","dark")}</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Blog — Trading Expo India 2027</title>
@@ -12,10 +13,6 @@
 <meta property="og:type" content="website">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=20260925b">
 <style>
 .txi-blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin:40px 0 90px}
 @media(max-width:960px){.txi-blog-grid{grid-template-columns:repeat(2,1fr)}}
@@ -50,69 +47,12 @@
 <script type="application/ld+json">
 {"@context": "https://schema.org", "@graph": [{"@type": "Organization", "name": "ProFX Media FZ-LLC", "url": "https://TradingExpo.com", "logo": "https://dawoodshah2232-svg.github.io/tradingexpo-india/assets/og-image.png", "brand": {"@type": "Brand", "name": "Trading Expo India 2027"}}, {"@type": "Event", "name": "Trading Expo India 2027", "description": "India's premier online trading, fintech and financial markets exhibition, 23–24 April 2027.", "startDate": "2027-04-23T09:00:00+05:30", "endDate": "2027-04-24T18:00:00+05:30", "eventStatus": "https://schema.org/EventScheduled", "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode", "url": "https://dawoodshah2232-svg.github.io/tradingexpo-india/blog.html", "image": "https://dawoodshah2232-svg.github.io/tradingexpo-india/assets/og-image.png", "location": {"@type": "Place", "name": "To be announced", "address": {"@type": "PostalAddress", "addressCountry": "IN"}}, "organizer": {"@type": "Organization", "name": "ProFX Media FZ-LLC", "url": "https://TradingExpo.com"}}]}
 </script>
+  <script type="module" crossorigin src="./assets/blog-D9YYdDeJ.js"></script>
+  <link rel="modulepreload" crossorigin href="./assets/styles-BFCPP1E8.js">
+  <link rel="modulepreload" crossorigin href="./assets/posts-DuogG0WF.js">
+  <link rel="stylesheet" crossorigin href="./assets/styles-DvbG3v4C.css">
 </head>
 <body data-page="blog">
-<div id="siteHeader"></div>
-<main>
-<section class="page-hero has-img" style="--ph-img:url('assets/img/india-traders.jpg')"><div class="container">
-<p class="eyebrow">Blog</p>
-<h1>Insights from the editorial team.</h1>
-<p class="section-lead">55 in-depth guides on forex, crypto, trading strategies, risk management and fintech for Indian traders — plus everything about Trading Expo India 2027.</p>
-</div></section>
-<section class="section"><div class="container">
-<div class="txi-blog-tools">
-<div class="txi-search">
-<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
-<input type="search" id="blogSearch" placeholder="Search articles… (e.g. crypto tax, SEBI, stop-loss)" aria-label="Search articles">
-</div>
-</div>
-<div class="txi-filters" id="blogFilters" role="group" aria-label="Filter by category"></div>
-<p class="txi-count" id="blogCount"></p>
-<div class="txi-blog-grid" id="blogGrid"></div>
-</div></section>
-</main>
-<div id="siteFooter"></div>
-<button class="to-top" id="toTop" aria-label="Back to top">↑</button>
-<script src="script.js?v=20260925a"></script>
-<script>
-(function(){
-  var grid=document.getElementById('blogGrid'),filters=document.getElementById('blogFilters'),
-      search=document.getElementById('blogSearch'),count=document.getElementById('blogCount');
-  var posts=[],activeCat='All';
-  function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
-  function card(p){
-    return '<a class="txi-post-card" href="'+p.file+'">'+
-      '<img src="assets/img/'+p.img+'" alt="'+esc(p.title)+'" loading="lazy">'+
-      '<div class="txi-post-body"><span class="txi-tag">'+esc(p.category)+'</span>'+
-      '<h2>'+esc(p.title)+'</h2><p>'+esc(p.excerpt)+'</p>'+
-      '<span class="txi-meta">Editorial team &middot; '+esc(p.date)+' &middot; '+esc(p.read)+'</span></div></a>';
-  }
-  function render(){
-    var q=search.value.trim().toLowerCase();
-    var list=posts.filter(function(p){
-      var okCat=activeCat==='All'||p.category===activeCat;
-      var okQ=!q||(p.title+' '+p.excerpt+' '+p.category).toLowerCase().indexOf(q)>-1;
-      return okCat&&okQ;
-    });
-    grid.innerHTML=list.length?list.map(card).join(''):'<div class="txi-empty"><h3>No articles found</h3><p>Try a different search term or category.</p></div>';
-    count.textContent='Showing '+list.length+' of '+posts.length+' articles';
-  }
-  fetch('assets/blog-index.json').then(function(r){return r.json();}).then(function(data){
-    posts=data;
-    var cats=['All'].concat([...new Set(posts.map(function(p){return p.category;}))]);
-    filters.innerHTML=cats.map(function(c){
-      return '<button class="txi-filter'+(c==='All'?' active':'')+'" data-cat="'+esc(c)+'">'+esc(c)+'</button>';
-    }).join('');
-    filters.addEventListener('click',function(e){
-      var b=e.target.closest('.txi-filter');if(!b)return;
-      activeCat=b.getAttribute('data-cat');
-      filters.querySelectorAll('.txi-filter').forEach(function(x){x.classList.toggle('active',x===b);});
-      render();
-    });
-    var t;search.addEventListener('input',function(){clearTimeout(t);t=setTimeout(render,180);});
-    render();
-  }).catch(function(){grid.innerHTML='<div class="txi-empty"><p>Could not load articles. Please refresh.</p></div>';});
-})();
-</script>
+<div id="root"></div>
 </body>
 </html>
