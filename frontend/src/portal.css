@@ -1,5 +1,5 @@
 /* Trading Expo India 2027 — Portal CRM styles
-   Brand: navy #0B1F3B · green #00C853 · light #F4F8FA · green-2 #00A86B · Montserrat */
+   Brand: navy #0B1F3B · green #00C853 · light #F4F8FA · green-2 #00A86B *
 :root{
   --navy:#0B1F3B; --navy-2:#12294d; --green:#00C853; --green-2:#00A86B;
   --bg:#F4F8FA; --card:#ffffff; --ink:#0e1a2e; --muted:#5b6b82;
@@ -8,7 +8,7 @@
 }
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body.pbody{margin:0;font-family:"Montserrat",system-ui,sans-serif;background:var(--bg);color:var(--ink);min-height:100vh}
+body.pbody{margin:0;font-family:system-ui,sans-serif;background:var(--bg);color:var(--ink);min-height:100vh}
 img{max-width:100%}
 a{color:var(--green-2)}
 button{font-family:inherit}
