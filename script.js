@@ -19,12 +19,19 @@
   var page = (document.body && document.body.getAttribute("data-page")) || "home";
 
   function renderChrome() {
+    // Blog articles live under /blog/ — prefix relative chrome URLs so nav,
+    // logos and CTAs resolve to the site root from article pages.
+    var base = (page === "blog") ? "../" : "";
+    function fixUrls(html) {
+      if (!base) return html;
+      return html.replace(/(href|src|data-logo-dark|data-logo-light)="(?![a-z]+:|\#|\.\.\/)([^"]*)"/g, '$1="' + base + '$2"');
+    }
     var headerMount = document.getElementById("siteHeader");
     if (headerMount) {
       var links = NAV_LINKS.map(function (l) {
         return '<a href="' + l[0] + '"' + (l[1] === page ? ' class="active" aria-current="page"' : "") + ">" + l[2] + "</a>";
       }).join("");
-      headerMount.innerHTML =
+      headerMount.innerHTML = fixUrls(
         '<header class="nav" id="nav"><div class="nav-inner">' +
         '<a class="logo" href="index.html" aria-label="Trading Expo India — home">' +
         '<img class="nav-logo theme-logo" src="assets/logo-dark-compact.png" data-logo-dark="assets/logo-dark-compact.png" data-logo-light="assets/logo-light-compact.png" alt="Trading Expo India"></a>' +
@@ -37,11 +44,11 @@
         '<svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>' +
         "</button>" +
         '<button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>' +
-        "</div></div></header>";
+        "</div></div></header>");
     }
     var footerMount = document.getElementById("siteFooter");
     if (footerMount) {
-      footerMount.innerHTML =
+      footerMount.innerHTML = fixUrls(
         '<footer class="footer"><div class="container"><div class="footer-grid">' +
         '<div class="footer-brand">' +
         '<a class="logo" href="index.html" aria-label="Trading Expo India — home">' +
@@ -59,7 +66,7 @@
         '<span id="themeLabel">Light mode</span></button>' +
         "</div></div>" +
         '<div class="footer-bottom"><span>© 2027 Trading Expo India. All rights reserved.</span><span>Organizer: ProFX Media FZ-LLC</span></div>' +
-        "</div></footer>";
+        "</div></footer>");
     }
   }
   renderChrome();

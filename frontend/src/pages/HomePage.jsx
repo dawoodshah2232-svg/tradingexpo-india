@@ -4,14 +4,14 @@ import { GalleryTrack } from '../components/Gallery.jsx';
 import { useAssetBase } from '../lib/theme.jsx';
 
 const GALLERY = [
-  { img: 'img/expo-grand-hall.jpg', alt: 'Grand exhibition hall', top: 'The Grand Hall', bottom: '10,000+ visitors under one roof' },
-  { img: 'img/expo-main-stage.jpg', alt: 'Main stage keynote', top: 'Main Stage', bottom: 'Keynotes that set the agenda' },
-  { img: 'img/expo-floor-aerial.jpg', alt: 'Exhibition floor aerial view', top: 'The Floor', bottom: '70–80 brands, live and hands-on' },
-  { img: 'img/expo-registration.jpg', alt: 'Registration area', top: 'Welcome', bottom: 'Fast-track entry for pass holders' },
-  { img: 'img/expo-networking.jpg', alt: 'Networking lounge', top: 'The Lounge', bottom: 'Where deals get started' },
-  { img: 'img/expo-vip-lounge.jpg', alt: 'VIP lounge', top: 'VIP', bottom: 'An experience above it all' },
-  { img: 'img/india-mumbai-skyline.jpg', alt: 'Mumbai skyline at dusk', top: 'Host Nation', bottom: "India's trading moment" },
-  { img: 'img/brand-lockup.jpg', alt: 'Trading Expo official brand identity', top: 'The Identity', bottom: 'Traders · Brokers · Technology' },
+  { img: 'img/expo-grand-hall.webp', alt: 'Grand exhibition hall', top: 'The Grand Hall', bottom: '10,000+ visitors under one roof' },
+  { img: 'img/expo-main-stage.webp', alt: 'Main stage keynote', top: 'Main Stage', bottom: 'Keynotes that set the agenda' },
+  { img: 'img/expo-floor-aerial.webp', alt: 'Exhibition floor aerial view', top: 'The Floor', bottom: '70–80 brands, live and hands-on' },
+  { img: 'img/expo-registration.webp', alt: 'Registration area', top: 'Welcome', bottom: 'Fast-track entry for pass holders' },
+  { img: 'img/expo-networking.webp', alt: 'Networking lounge', top: 'The Lounge', bottom: 'Where deals get started' },
+  { img: 'img/expo-vip-lounge.webp', alt: 'VIP lounge', top: 'VIP', bottom: 'An experience above it all' },
+  { img: 'img/india-mumbai-skyline.webp', alt: 'Mumbai skyline at dusk', top: 'Host Nation', bottom: "India's trading moment" },
+  { img: 'img/brand-lockup.webp', alt: 'Trading Expo official brand identity', top: 'The Identity', bottom: 'Traders · Brokers · Technology' },
 ];
 
 const STATS = [
@@ -22,9 +22,9 @@ const STATS = [
 ];
 
 const EXP = [
-  { img: 'img/expo-floor-aerial.jpg', alt: 'Exhibition floor from above', h: '70–80 Exhibitors', p: 'Brokers, fintech and trading tech — live on the floor.' },
-  { img: 'img/expo-main-stage.jpg', alt: 'Main stage keynote', h: '80+ Speakers', p: 'Keynotes, panels and fireside chats across two days.' },
-  { img: 'img/expo-networking.jpg', alt: 'Networking lounge', h: 'Networking', p: "Meet India's traders, IBs, affiliates and industry leaders." },
+  { img: 'img/expo-floor-aerial.webp', alt: 'Exhibition floor from above', h: '70–80 Exhibitors', p: 'Brokers, fintech and trading tech — live on the floor.' },
+  { img: 'img/expo-main-stage.webp', alt: 'Main stage keynote', h: '80+ Speakers', p: 'Keynotes, panels and fireside chats across two days.' },
+  { img: 'img/expo-networking.webp', alt: 'Networking lounge', h: 'Networking', p: "Meet India's traders, IBs, affiliates and industry leaders." },
 ];
 
 const TICKETS = [
@@ -127,7 +127,7 @@ export default function HomePage() {
               <Reveal as="p" className="split-lead">A two-day exhibition and conference connecting India's trading community with global brokers, fintech innovators and trading technology.</Reveal>
             </div>
             <Reveal as="figure" className="banner">
-              <ParallaxImg src={ab + 'img/expo-grand-hall.jpg'} alt="Grand exhibition hall at Trading Expo India" loading="lazy" data-parallax-img />
+              <ParallaxImg src={ab + 'img/expo-grand-hall.webp'} alt="Grand exhibition hall at Trading Expo India" loading="lazy" data-parallax-img />
               <figcaption>The exhibition floor — 70–80 brands, live demos, real conversations</figcaption>
             </Reveal>
             <Reveal className="center"><a href="exhibit.html" className="btn btn-primary btn-lg">Exhibit With Us</a></Reveal>
@@ -199,7 +199,7 @@ export default function HomePage() {
             <Reveal as="p" className="eyebrow">Why India</Reveal>
             <Reveal as="h2" className="section-title">The world's most exciting<br />trading <span className="grad">market.</span></Reveal>
             <Reveal as="figure" className="banner">
-              <ParallaxImg src={ab + 'img/india-mumbai-skyline.jpg'} alt="Mumbai skyline at dusk" loading="lazy" data-parallax-img />
+              <ParallaxImg src={ab + 'img/india-mumbai-skyline.webp'} alt="Mumbai skyline at dusk" loading="lazy" data-parallax-img />
               <figcaption>India — mobile-first, high-growth, fintech-ready</figcaption>
             </Reveal>
             <Reveal className="india-cards">

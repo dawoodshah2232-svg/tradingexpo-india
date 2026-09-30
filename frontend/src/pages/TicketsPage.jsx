@@ -27,7 +27,7 @@ export default function TicketsPage() {
   const ab = useAssetBase();
   return (
     <main>
-      <section className="page-hero has-img" style={{ '--ph-img': `url('${ab}img/expo-registration.jpg')` }}>
+      <section className="page-hero has-img" style={{ '--ph-img': `url('${ab}img/expo-registration.webp')` }}>
         <div className="container">
           <Reveal className="eyebrow">Tickets</Reveal>
           <Reveal as="h1">Book your pass.</Reveal>

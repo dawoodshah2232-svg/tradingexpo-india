@@ -45,10 +45,10 @@ const EXHIBIT_FIELDS = (
 export default function ExhibitPage() {
   const ab = useAssetBase();
   const { open, view } = useLightbox();
-  const fpSrc = ab + 'img/floor-plan-concept.jpg';
+  const fpSrc = ab + 'img/floor-plan-concept.webp';
   return (
     <main>
-      <section className="page-hero has-img" style={{ '--ph-img': `url('${ab}img/brand-booth.jpg')` }}>
+      <section className="page-hero has-img" style={{ '--ph-img': `url('${ab}img/brand-booth.webp')` }}>
         <div className="container">
           <Reveal className="eyebrow">Exhibit</Reveal>
           <Reveal as="h1">Put your brand in front of<br /><span className="grad">India's trading community.</span></Reveal>
@@ -66,9 +66,9 @@ export default function ExhibitPage() {
           <Reveal as="h2" className="section-title">The India <span className="grad">opportunity.</span></Reveal>
           <div className="why-grid">
             {[
-              ['india-traders.jpg', 'Indian trading professionals', "Meet India's traders face-to-face", "Two days of direct conversations with India's growing trading community."],
-              ['expo-networking.jpg', 'Networking at the expo', 'Build your partner network', 'Meet IBs, affiliates, educators, media and strategic partners.'],
-              ['expo-main-stage.jpg', 'Main stage', 'Own the stage', 'Speaking slots, panels and product launches put your brand centre stage.'],
+              ['india-traders.webp', 'Indian trading professionals', "Meet India's traders face-to-face", "Two days of direct conversations with India's growing trading community."],
+              ['expo-networking.webp', 'Networking at the expo', 'Build your partner network', 'Meet IBs, affiliates, educators, media and strategic partners.'],
+              ['expo-main-stage.webp', 'Main stage', 'Own the stage', 'Speaking slots, panels and product launches put your brand centre stage.'],
             ].map(([img, alt, h, p], i) => (
               <Reveal as="article" className="why-card" delay={i * 80} key={h}>
                 <img src={ab + 'img/' + img} alt={alt} loading="lazy" />

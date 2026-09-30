@@ -7,12 +7,12 @@ import { faqItems, faqSchema } from '../data/venue-faq.js';
 export default function VenuePage() {
   const ab = useAssetBase();
   const { open, view } = useLightbox();
-  const floorplanSrc = ab + 'img/floor-plan-concept.jpg';
+  const floorplanSrc = ab + 'img/floor-plan-concept.webp';
 
   return (
     <>
       <main>
-        <section className="page-hero has-img" style={{ '--ph-img': `url('${ab}img/india-skyline.jpg')` }}>
+        <section className="page-hero has-img" style={{ '--ph-img': `url('${ab}img/india-skyline.webp')` }}>
           <div className="container">
             <Reveal className="eyebrow">Venue</Reveal>
             <Reveal as="h1">India.<br /><span className="grad">The destination.</span></Reveal>
@@ -41,7 +41,7 @@ export default function VenuePage() {
             <Reveal className="eyebrow">Why India</Reveal>
             <Reveal as="h2" className="section-title">A market on the <span className="grad">move.</span></Reveal>
             <Reveal as="figure" className="banner">
-              <ParallaxImg src={ab + 'img/india-mumbai-skyline.jpg'} alt="Mumbai skyline at dusk" loading="lazy" />
+              <ParallaxImg src={ab + 'img/india-mumbai-skyline.webp'} alt="Mumbai skyline at dusk" loading="lazy" />
               <figcaption>India — one of the world's most dynamic trading markets</figcaption>
             </Reveal>
             <Reveal className="india-cards">

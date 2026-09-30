@@ -124,6 +124,11 @@ function Footer({ linkBase }) {
         <div className="footer-bottom">
           <span>© 2027 Trading Expo India. All rights reserved.</span>
           <span>Organizer: ProFX Media FZ-LLC</span>
+          <span className="footer-legal">
+            <a href={linkBase + "privacy.html"}>Privacy Policy</a>
+            <span aria-hidden="true"> · </span>
+            <a href={linkBase + "terms.html"}>Terms &amp; Conditions</a>
+          </span>
         </div>
       </div>
     </footer>

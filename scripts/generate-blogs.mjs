@@ -41,11 +41,11 @@ for (const a of ARTICLES) {
 
 // ---------- images (cycle through real repo assets) ----------
 const IMGS = [
-  "expo-floor.jpg","expo-main-stage.jpg","trading-tech.jpg","india-traders.jpg",
-  "expo-floor-aerial.jpg","expo-grand-hall.jpg","conference-panel.jpg","keynote-stage.jpg",
-  "expo-networking.jpg","networking-lounge.jpg","expo-registration.jpg","expo-vip-lounge.jpg",
-  "booth-demo.jpg","brand-booth.jpg","india-mumbai-skyline.jpg","india-skyline.jpg",
-  "hero-expo.jpg","brand-rollup.jpg","brand-signage.jpg","brand-badge.jpg"
+  "expo-floor.webp","expo-main-stage.webp","trading-tech.webp","india-traders.webp",
+  "expo-floor-aerial.webp","expo-grand-hall.webp","conference-panel.webp","keynote-stage.webp",
+  "expo-networking.webp","networking-lounge.webp","expo-registration.webp","expo-vip-lounge.webp",
+  "booth-demo.webp","brand-booth.webp","india-mumbai-skyline.webp","india-skyline.webp",
+  "hero-expo.webp","brand-rollup.webp","brand-signage.webp","brand-badge.webp"
 ];
 const imgFor = (i) => IMGS[i % IMGS.length];
 
@@ -53,8 +53,28 @@ const stripTags = (s) => s.replace(/<[^>]*>/g, " ");
 const wordCount = (s) => stripTags(s).split(/\s+/).filter(Boolean).length;
 const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 const bySlug = Object.fromEntries(ARTICLES.map(a => [a.slug, a]));
+const IMG_DIMS = JSON.parse(readFileSync(new URL("./blog-img-dims.json", import.meta.url), "utf8"));
+
+function breadcrumbJsonLd(a) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home",
+       "item": "https://dawoodshah2232-svg.github.io/tradingexpo-india/"},
+      {"@type": "ListItem", "position": 2, "name": "Blog",
+       "item": "https://dawoodshah2232-svg.github.io/tradingexpo-india/blog.html"},
+      {"@type": "ListItem", "position": 3, "name": a.title,
+       "item": `https://dawoodshah2232-svg.github.io/tradingexpo-india/blog/${a.slug}.html`}
+    ]
+  };
+}
 
 // ---------- article template ----------
+function imgDimsAttr(img) {
+  const d = IMG_DIMS[img.replace(/\.webp$/, ".jpg")];
+  return d ? ` width="${d[0]}" height="${d[1]}"` : "";
+}
 function articleHTML(a, idx) {
   const img = imgFor(idx);
   const bodyWords = wordCount(a.intro.join(" ")) + a.sections.reduce((n, s) => n + wordCount(s.ps.join(" ")), 0);
@@ -88,7 +108,7 @@ function articleHTML(a, idx) {
     "@type": "Article",
     "headline": a.title,
     "description": a.meta,
-    "datePublished": "2026-09-24",
+    "datePublished": a.date || "2026-09-24",
     "author": { "@type": "Organization", "name": "Trading Expo India" }
   };
   // sanity: JSON-LD must parse
@@ -108,11 +128,14 @@ function articleHTML(a, idx) {
 <meta property="og:type" content="article">
 <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png">
 <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="canonical" href="https://dawoodshah2232-svg.github.io/tradingexpo-india/blog/${a.slug}.html">
 <link rel="stylesheet" href="../styles.css?v=20260925a">
 <style>
+:root{--font-body:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif;--font-display:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif}
+.txi-author{background:var(--card,#10151b);border:1px solid var(--border,#232b34);border-radius:16px;padding:26px 28px;margin:3em 0}
+.txi-author h3{margin:0 0 .6em;font-size:1.1rem}
+.txi-author p{margin:0;color:var(--muted,#9aa3ad);font-size:.95rem;line-height:1.8}
+.txi-author a{font-weight:600}
 .txi-byline{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin:20px 0 34px;padding:16px 22px;border:1px solid var(--border,#232b34);border-radius:14px;font-size:.9rem;color:var(--muted,#9aa3ad)}
 .txi-article{max-width:760px;margin:0 auto}
 .txi-article p{line-height:1.85;margin:0 0 1.4em;font-size:1.02rem}
@@ -145,6 +168,9 @@ ${JSON.stringify(articleJsonLd, null, 2)}
 <script type="application/ld+json">
 ${JSON.stringify(faqJsonLd, null, 2)}
 </script>
+<script type="application/ld+json">
+${JSON.stringify(breadcrumbJsonLd(a), null, 2)}
+</script>
 </head>
 <body data-page="blog">
 <div id="siteHeader"></div>
@@ -157,7 +183,7 @@ ${JSON.stringify(faqJsonLd, null, 2)}
 <section class="section"><div class="container"><div class="txi-article">
 <p><a class="txi-back" href="../blog.html">&larr; Back to all articles</a></p>
 <figure>
-<img src="../assets/img/${img}" alt="${esc(a.title)}" loading="lazy">
+<img src="../assets/img/${img}" alt="${esc(a.title)}" loading="lazy"${imgDimsAttr(img)}>
 <figcaption>Trading Expo India 2027 &mdash; 23&ndash;24 April 2027, India.</figcaption>
 </figure>
 ${a.intro.map(p => `<p>${p}</p>`).join("\n")}
@@ -165,6 +191,10 @@ ${sectionsHTML}
 <h2>Frequently asked questions</h2>
 <div class="txi-faq">
 ${faqHTML}
+</div>
+<div class="txi-author">
+<h3>About the author</h3>
+<p>Written by the <strong>Trading Expo India editorial team</strong> &mdash; market researchers and event producers behind India&rsquo;s premier trading &amp; fintech exhibition, 23&ndash;24 April 2027. We publish practical, hype-free guides for Indian traders. <a href="../contact.html">Contact us</a>.</p>
 </div>
 <div class="txi-related">
 <h3>Related articles</h3>
@@ -218,18 +248,18 @@ for (const a of ARTICLES) {
   }
   // spot-check JSON-LD parses
   const ldBlocks = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)];
-  if (ldBlocks.length !== 2) fail(`${a.slug}: expected 2 JSON-LD blocks, got ${ldBlocks.length}`);
+  if (ldBlocks.length !== 3) fail(`${a.slug}: expected 3 JSON-LD blocks, got ${ldBlocks.length}`);
   for (const b of ldBlocks) JSON.parse(b[1]);
 }
 console.log("All internal links resolve; JSON-LD valid in all 50 files.");
 
 // ---------- blog index JSON (50 new + 5 existing) ----------
 const existing = [
-  { slug: "why-india-is-the-future-of-online-trading", title: "Why India is the future of online trading", category: "India focus", img: "india-skyline.jpg", read: "6 min read", date: "Sep 25, 2026", excerpt: "A mobile-first generation, world-class digital payments and a surging retail investing culture — why the next chapter of online trading is being written in India." },
-  { slug: "what-to-expect-at-trading-expo-india-2027", title: "What to expect at Trading Expo India 2027", category: "Event guide", img: "expo-floor.jpg", read: "7 min read", date: "Sep 25, 2026", excerpt: "Two days, 70–80 exhibitors, 80+ speakers, live demos and a lucky draw — a walkthrough of everything waiting for you on 23–24 April 2027." },
-  { slug: "exhibitor-guide-trading-expo-india-2027", title: "The exhibitor's guide to Trading Expo India 2027", category: "For exhibitors", img: "booth-demo.jpg", read: "7 min read", date: "Sep 25, 2026", excerpt: "How to get the most out of your booth: preparation checklists, staffing tips, lead capture and making 10,000+ visitors remember your brand." },
-  { slug: "top-reasons-to-attend-trading-expo-india-2027", title: "Top reasons to attend Trading Expo India 2027", category: "Visitors", img: "networking-lounge.jpg", read: "6 min read", date: "Sep 25, 2026", excerpt: "From hands-on trading technology to early-bird passes starting at ₹249 — eight reasons April 2027 belongs in your calendar." },
-  { slug: "india-trading-community-by-the-numbers", title: "India's trading community, by the numbers", category: "By the numbers", img: "trading-tech.jpg", read: "5 min read", date: "Sep 25, 2026", excerpt: "The figures behind the event — 10,000+ visitors, 70–80 exhibitors, 80+ speakers — and the community trends making them possible." }
+  { slug: "why-india-is-the-future-of-online-trading", title: "Why India is the future of online trading", category: "India focus", img: "india-skyline.webp", read: "6 min read", date: "Sep 25, 2026", excerpt: "A mobile-first generation, world-class digital payments and a surging retail investing culture — why the next chapter of online trading is being written in India." },
+  { slug: "what-to-expect-at-trading-expo-india-2027", title: "What to expect at Trading Expo India 2027", category: "Event guide", img: "expo-floor.webp", read: "7 min read", date: "Sep 25, 2026", excerpt: "Two days, 70–80 exhibitors, 80+ speakers, live demos and a lucky draw — a walkthrough of everything waiting for you on 23–24 April 2027." },
+  { slug: "exhibitor-guide-trading-expo-india-2027", title: "The exhibitor's guide to Trading Expo India 2027", category: "For exhibitors", img: "booth-demo.webp", read: "7 min read", date: "Sep 25, 2026", excerpt: "How to get the most out of your booth: preparation checklists, staffing tips, lead capture and making 10,000+ visitors remember your brand." },
+  { slug: "top-reasons-to-attend-trading-expo-india-2027", title: "Top reasons to attend Trading Expo India 2027", category: "Visitors", img: "networking-lounge.webp", read: "6 min read", date: "Sep 25, 2026", excerpt: "From hands-on trading technology to early-bird passes starting at ₹249 — eight reasons April 2027 belongs in your calendar." },
+  { slug: "india-trading-community-by-the-numbers", title: "India's trading community, by the numbers", category: "By the numbers", img: "trading-tech.webp", read: "5 min read", date: "Sep 25, 2026", excerpt: "The figures behind the event — 10,000+ visitors, 70–80 exhibitors, 80+ speakers — and the community trends making them possible." }
 ];
 const index = [
   ...existing.map(e => ({ ...e, file: `blog/${e.slug}.html` })),

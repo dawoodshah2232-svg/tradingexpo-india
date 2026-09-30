@@ -1,7 +1,9 @@
 // Generates frontend/*.html entry shells from the current static pages.
 // Preserves each page's <head> (SEO meta, OG tags, JSON-LD, fonts) verbatim,
 // drops the old stylesheet <link>s (Vite injects bundled CSS via JS imports),
-// and wires the body to the React entry module.
+// wires the body to the React entry module, and injects a static pre-render
+// block inside #root so crawlers / no-JS clients see real content (h1, intro,
+// nav). React 18 createRoot replaces #root children on load.
 import { readFileSync, writeFileSync, mkdirSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
@@ -24,6 +26,62 @@ const PAGES = [
   ['contact.html', 'contact'],
   ['portal.html', 'portal'],
 ];
+
+// Human-written pre-render summaries (kept in sync with each page's purpose).
+const PRE_RENDER = {
+  'index.html': ['Trading Expo India 2027',
+    'India\u2019s premier trading and fintech exhibition comes to India on 23\u201324 April 2027 \u2014 two days of live trading technology, 70\u201380 exhibitors, 80+ speakers and 10,000+ visitors under one roof.'],
+  'tickets.html': ['Book Tickets',
+    'Secure your pass for Trading Expo India 2027, 23\u201324 April 2027 in India. Early-bird passes from \u20b9249 \u2014 two full days on the expo floor, keynotes, panels and the awards night.'],
+  'exhibit.html': ['Exhibit',
+    'Put your brand in front of 10,000+ traders, investors and fintech buyers. Book a booth at Trading Expo India 2027 and demo your platform live on the expo floor, 23\u201324 April 2027.'],
+  'agenda.html': ['Agenda',
+    'Two days of keynotes, panels and live trading sessions across 23\u201324 April 2027 \u2014 the indicative agenda for Trading Expo India 2027. Final speakers and timings will be announced soon.'],
+  'venue.html': ['Venue',
+    'Trading Expo India 2027 takes place 23\u201324 April 2027 in India. The host city and venue announcement is coming soon \u2014 travel guidance, hotels and logistics will be published here.'],
+  'gallery.html': ['Gallery',
+    'A visual tour of the Trading Expo India 2027 experience \u2014 the grand hall, main stage, expo floor, networking lounges and the energy of 10,000+ visitors.'],
+  'sponsors.html': ['Sponsorships',
+    'Put your brand centre stage at India\u2019s premier trading expo. Title, Platinum, Gold, Silver and Bronze tiers plus spotlight branding packages for 23\u201324 April 2027.'],
+  'awards.html': ['Trading Expo India Awards 2027',
+    'Celebrating excellence in trading \u2014 the best brokers, trading platforms, fintech innovators and educators in India\u2019s trading industry. Gala night on 23 April 2027; nominations opening soon.'],
+  'blog.html': ['Blog',
+    'Practical, hype-free guides for Indian traders \u2014 market explainers, broker and tax guides, expo news and event updates from the Trading Expo India editorial team.'],
+  'faq.html': ['Frequently Asked Questions',
+    'Answers to the most common questions about Trading Expo India 2027 \u2014 tickets, venue, exhibiting, sponsorships and attending across 23\u201324 April 2027.'],
+  'contact.html': ['Contact',
+    'Get in touch with the Trading Expo India 2027 team \u2014 for tickets, exhibiting, sponsorships, speaking slots or press enquiries. Organised by ProFX Media FZ-LLC.'],
+  'portal.html': ['Portal',
+    'The Trading Expo India 2027 portal \u2014 dashboards for ticket holders, exhibitors and event admins to manage tickets, booths, badges and announcements in one place.'],
+};
+
+const NAV = [
+  ['index.html', 'Home'], ['tickets.html', 'Tickets'], ['exhibit.html', 'Exhibit'],
+  ['agenda.html', 'Agenda'], ['venue.html', 'Venue'], ['gallery.html', 'Gallery'],
+  ['sponsors.html', 'Sponsors'], ['awards.html', 'Awards'], ['blog.html', 'Blog'],
+  ['faq.html', 'FAQ'], ['contact.html', 'Contact'], ['portal.html', 'Portal'],
+];
+
+const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+function preRender(file) {
+  const [h1, intro] = PRE_RENDER[file] || ['Trading Expo India 2027', ''];
+  const links = NAV.map(([href, label]) =>
+    `<a href="${href}">${label}</a>`).join(' · ');
+  let extra = '';
+  if (file === 'blog.html') {
+    const posts = JSON.parse(readFileSync(join(FRONT, 'public', 'assets', 'blog-index.json'), 'utf8'));
+    extra = '<h2>Latest articles</h2><ul>' + posts.map((p) =>
+      `<li><a href="blog/${p.slug}.html">${esc(p.title)}</a></li>`).join('') + '</ul>';
+  }
+  return `<div class="txi-prerender" style="max-width:1120px;margin:0 auto;padding:56px 24px;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Segoe UI',Helvetica,Arial,sans-serif;color:#e8ecef">`
+    + `<p style="font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:#00C853;font-weight:700">Trading Expo India 2027 · 23\u201324 April 2027 · India</p>`
+    + `<h1 style="font-size:2rem;line-height:1.25">${esc(h1)}</h1>`
+    + `<p style="font-size:1.05rem;line-height:1.8;color:#9aa3ad;max-width:760px">${esc(intro)}</p>`
+    + extra
+    + `<nav aria-label="Site" style="margin-top:28px;font-size:.95rem">${links}</nav>`
+    + `</div>`;
+}
 
 const THEME_INIT = `<script>try{var t=localStorage.getItem("txi-theme");document.documentElement.setAttribute("data-theme",t==="light"||t==="dark"?t:"dark")}catch(e){document.documentElement.setAttribute("data-theme","dark")}</script>`;
 
@@ -49,7 +107,7 @@ ${THEME_INIT}
 ${head.trim()}
 </head>
 <body${bodyAttrs}>
-<div id="root"></div>
+<div id="root">${preRender(file)}</div>
 <script type="module" src="/src/entries/${entry}.jsx"></script>
 </body>
 </html>
