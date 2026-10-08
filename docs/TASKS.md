@@ -17,10 +17,11 @@ Sequenced, small. Unknowns are TODO, not guesses.
 - [ ] feat/portal-crm, feat/seo-aeo, feat/sponsors-awards, feat/visual-motion branches open — merge status TODO
 
 ## TODO (sequenced)
-1. [ ] Owner content pass: venue/city confirmation, speaker lineup, award categories, sponsor logos, ticket finalization (owner said he would send content; nothing received yet — do NOT invent)
-2. [ ] Decide source of truth for pages: root legacy static HTML vs `frontend/` React (both exist on main; live Pages site builds from `frontend/`)
+1. [ ] Owner content pass: venue/city confirmation, speaker lineup, award categories, sponsor logos, ticket finalization (owner said he would send content; nothing received yet — do NOT invent)2. [ ] Decide source of truth for pages: root legacy static HTML vs `frontend/` React (both exist on main; live Pages site builds from `frontend/`)
 3. [ ] Remove or confirm legacy `script.js` / `styles.css` at gh-pages root (v1 leftovers, not referenced by hashed bundles)
 4. [ ] Backend production deploy: Laravel to cPanel (DB, env, SMTP) — requires owner review + manual deploy; api/ flat-PHP path is the fallback option
 5. [ ] Wire booking confirmation emails end-to-end once backend is live
 6. [ ] Exhibitor onboarding content (booth packages, pricing) — confirm from owner before publishing
 7. [ ] Post-deploy: verify all 12 pages + portal flows on a real phone, submit sitemap to Google Search Console
+8. [ ] SEO follow-ups (owner-side): (a) Google Search Console — Dawood verifies the property in the GSC UI (HTML file or DNS), then submits `https://dawoodshah2232-svg.github.io/tradingexpo-india/sitemap.xml`; nothing repo-side can substitute the UI step. (b) Legal review of privacy.html + terms.html (agent-drafted 2026-10-08 from repo facts; have counsel/owner confirm before treating as final).
+9. [ ] Backlink strategy (earn via content only — NEVER buy links, link farms, or spam): publish the 65-article blog library as the linkable asset; announce the expo via press release to Indian fintech/trading media; ask confirmed speakers/exhibitors/sponsors to link the expo from their sites; list the event in legitimate Indian event/startup directories; guest posts on trading publications linking back to guides. No fake reviews/ratings, no keyword stuffing, no thin pages.

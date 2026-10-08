@@ -2,6 +2,17 @@
 
 Progress log from git history + repo state. Newest first.
 
+## 2026-10-08
+- 20-fix SEO sweep (audit > fix > verify), committed + deployed to Pages:
+  - privacy.html + terms.html rewritten as full self-contained static pages (were empty shells pointing at JS/CSS bundles missing from gh-pages — both pages rendered blank on live). Now: h1, real sections, inline styles, canonical, OG, BreadcrumbList JSON-LD, footer nav. Content written from repo facts only (organiser ProFX Media FZ-LLC, info@tradingexpo.com, 23–24 Apr 2027) — needs owner's legal review (TODO in TASKS.md).
+  - All 65 blog articles: <title> trimmed to ≤60 chars (headline at word boundary), 2 descriptions >160 trimmed, og:image/twitter:image → absolute https .webp URLs (7 articles had relative/jpg OG images; 53 had relative og-image).
+  - Page heads: awards.html title 66→55 chars + added missing og:url + relative og:image → absolute; sponsors.html title 68→37; blog.html description updated (55→65 articles) and ≤160.
+  - frontend/blog/: 2 missing post shells generated (jane-street, sebi-jagrook); all 65 shells re-synced with article heads.
+  - 404.html copied from gh-pages into main (was missing on main; would be lost on a clean redeploy).
+  - Mobile: menu-btn tap target ≥44px in ≤900px query (theme-toggle/nav already ≥44px; body overflow-x hidden; tables in scroll wrappers).
+  - Verified: vite build clean; all 12 dist pages OK (title≤60, desc≤160, 1 h1, canonical, 5/5 OG, valid JSON-LD); 65 dist blog shells OK; zero missing local asset refs in dist.
+- GSC verification + sitemap submission still needs owner action in Search Console UI (TODO in TASKS.md); backlink strategy note added (earn via content only, never buy/spam).
+
 ## 2026-10-06
 - Blog: "Jane Street vs SEBI at SAT — Bank Nifty expiry fight, Oct 6 hearing" published (91360ab).
 - Deployed main → gh-pages (91dddf4 merge).

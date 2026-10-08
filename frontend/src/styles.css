@@ -426,7 +426,7 @@ body.loaded [data-hero]:nth-of-type(1) { animation-delay: 0.05s; }
 }
 @media (max-width: 900px) {
   .nav-links { display: none; }
-  .menu-btn { display: flex; }
+  .menu-btn { display: flex; min-width: 44px; min-height: 44px; align-items: center; justify-content: center; }
   .nav-links.mobile-open { display: flex; position: fixed; top: var(--nav-h); left: 0; right: 0; flex-direction: column; padding: 14px 28px 28px; background: var(--nav-bg); -webkit-backdrop-filter: blur(26px) saturate(180%); backdrop-filter: blur(26px) saturate(180%); border-bottom: 1px solid var(--border); }
   .nav-links.mobile-open a { padding: 15px 0; font-size: 17px; border-bottom: 1px solid var(--border); }
   .nav-links.mobile-open a::after { display: none; }
