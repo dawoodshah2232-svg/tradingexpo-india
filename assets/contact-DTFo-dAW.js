@@ -1,4 +1,4 @@
-import{u as r,j as e,c,L as l}from"./styles-CNdhZKj7.js";import{R as s}from"./ui-RLOoXteo.js";function o(a){a.preventDefault();const n=new FormData(a.target),t=encodeURIComponent("Trading Expo India 2027 enquiry — "+n.get("interest")),i=encodeURIComponent("Name: "+n.get("name")+`
+import{u as r,j as e,c,L as l}from"./styles-Bpf5WvIa.js";import{R as s}from"./ui-BikucR3e.js";function o(a){a.preventDefault();const n=new FormData(a.target),t=encodeURIComponent("Trading Expo India 2027 enquiry — "+n.get("interest")),i=encodeURIComponent("Name: "+n.get("name")+`
 Email: `+n.get("email")+`
 Interested in: `+n.get("interest")+`
 
