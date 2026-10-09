@@ -2,6 +2,11 @@
 
 Progress log from git history + repo state. Newest first.
 
+## 2026-10-10
+- Traffic-launch audit (read-only checks vs live https://dawoodshah2232-svg.github.io/tradingexpo-india/): homepage 200 no redirects; title 59 chars, desc 157 chars, 1 h1, canonical, 5/5 OG — all OK. NO Google Analytics (G-/UA- none in HTML or assets bundles), NO GSC verification, NO AdSense script. robots.txt allow-all + sitemap ref — live OK. sitemap.xml valid, 80 URLs (67 blog articles — 2 more than recorded 65), sampled 3 → 200. privacy.html + terms.html are real full pages (2630/3674 visible chars, no lorem).
+- DRIFT vs recorded: RBI article (Oct 9, post-SEO-sweep) has 217-char meta description (>160 rule); all other sampled titles ≤60.
+- FIX APPLIED: /ads.txt was missing (404). Added exact publisher line `google.com, pub-6908561724114744, DIRECT, f08c47fec0942fa0` on main (18121c1) + deployed per convention to gh-pages (c0f8945); Pages build `built`; live verified 200 with exact content.
+
 ## 2026-10-08
 - 20-fix SEO sweep (audit > fix > verify), committed + deployed to Pages:
   - privacy.html + terms.html rewritten as full self-contained static pages (were empty shells pointing at JS/CSS bundles missing from gh-pages — both pages rendered blank on live). Now: h1, real sections, inline styles, canonical, OG, BreadcrumbList JSON-LD, footer nav. Content written from repo facts only (organiser ProFX Media FZ-LLC, info@tradingexpo.com, 23–24 Apr 2027) — needs owner's legal review (TODO in TASKS.md).
